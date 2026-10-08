@@ -77,7 +77,7 @@ grep -rn "EXEMPLO" site/
 - [ ] Perfil do TikTok e horário de atendimento (`config.js`)
 - [ ] Catálogo real: produtos, preços e fotos (`config.js` e `site/assets/img/produtos/`)
 - [ ] Logotipo oficial (`site/assets/img/logo.svg`, `logo-light.svg`, `favicon.svg`)
-- [ ] Fotos da Hero, das categorias, do Sobre e do Instagram (hoje são fotos livres do Unsplash)
+- [ ] Fotos da Hero, das categorias e do Sobre (hoje são fotos livres do Unsplash)
 - [ ] Depoimentos reais de clientes (`index.html`). **Não publique os depoimentos de exemplo.**
 - [ ] Texto institucional do "Sobre a Marca" revisado pela loja (`index.html`)
 - [ ] URL final do site no `canonical`, `og:url`, `og:image` e JSON-LD (`index.html`)

@@ -4,16 +4,15 @@
 **Date**: 2026-10-08 (revisão: Lançamentos como indicador, mensagens por origem)
 **Status**: Validated
 
-Define as entidades de conteúdo da landing page. Os dados dinâmicos (configuração, categorias e produtos) ficam em `site/assets/js/config.js`, que é o único arquivo que a loja edita. Os conteúdos fixos (diferenciais, depoimentos e mosaico) ficam direto no `index.html`, o que favorece o SEO e dispensa JS.
+Define as entidades de conteúdo da landing page. Os dados dinâmicos (configuração, categorias e produtos) ficam em `site/assets/js/config.js`, que é o único arquivo que a loja edita. Os conteúdos fixos (diferenciais e depoimentos) ficam direto no `index.html`, o que favorece o SEO e dispensa JS.
 
 | Entidade | Onde fica | Por quê |
 |---|---|---|
 | `StoreConfig` | `config.js` | Número e mensagens usados em vários pontos da página |
 | `Category` | `config.js` | Alimenta os filtros e os cards de categoria |
 | `Product` | `config.js` | Catálogo que muda com frequência |
-| `BrandPillar` | `index.html` | 4 itens fixos |
+| `BrandPillar` | `index.html` | 3 itens fixos |
 | `Testimonial` | `index.html` | 3 a 4 itens fixos |
-| `InstagramMedia` | `index.html` | 6 imagens fixas |
 
 ---
 
@@ -66,7 +65,7 @@ A mensagem do WhatsApp **não** é um campo do produto: ela é gerada por `Store
 
 ## 4. `BrandPillar` (HTML estático)
 
-4 itens fixos, conforme o FR-013: ícone SVG, título e descrição curta.
+3 itens fixos, conforme o FR-013: ícone SVG, título e descrição curta.
 
 ## 5. `Testimonial` (HTML estático)
 
@@ -77,9 +76,7 @@ A mensagem do WhatsApp **não** é um campo do produto: ela é gerada por `Store
 | Nota | Inteiro de 1 a 5, exibido como estrelas, com o texto alternativo "Nota 5 de 5" |
 | Relato | 80 a 280 caracteres |
 
-## 6. `InstagramMedia` (HTML estático)
-
-6 imagens quadradas `assets/img/insta/look-{1..6}.webp` (600×600), cada uma com `alt` e link para `StoreConfig.instagramUrl`.
+> A entidade `InstagramMedia` (mosaico de 6 fotos) foi removida no ajuste pós-implementação. A comunidade agora é só um convite com link para `StoreConfig.instagramUrl`.
 
 ---
 

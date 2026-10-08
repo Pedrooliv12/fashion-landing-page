@@ -33,7 +33,7 @@ Landing page de página única para a marca **Scorpion gytano**, com conversão 
 
 **Out of Scope**: Publicação/deploy (feita pelo responsável do projeto após a implementação); a URL canônica é provisória.
 
-**Scale/Scope**: 1 página, 9 blocos (FR-019), 8 a 12 produtos em 3 categorias + filtro de lançamentos, 4 diferenciais, 3 a 4 depoimentos, 6 fotos de mosaico.
+**Scale/Scope**: 1 página, 9 blocos (FR-019), 8 a 12 produtos em 3 categorias + filtro de lançamentos, 3 diferenciais, 3 a 4 depoimentos e um convite para o Instagram (sem mosaico de fotos).
 
 ## Constitution Check
 
@@ -42,7 +42,7 @@ Landing page de página única para a marca **Scorpion gytano**, com conversão 
 | Princípio (v1.1.0) | Como o plano atende | Status |
 |---|---|---|
 | **I. Mobile-First** | Classes base para mobile e breakpoints `sm/md/lg/xl` só para ampliar; filtros com rolagem interna; alvos de 44px; checagem em 320px e 2560px (V6) | **PASS** |
-| **II. Estética Editorial Clara e Paleta** | Tokens `ink/surface/line/muted/brand/brand-dark/brand-light/whatsapp` no `tailwind.config.js`; verde só em `data-whatsapp="header"` e `#floating-whatsapp`, com texto `#111111`; contrastes verificados em research §2 | **PASS** |
+| **II. Estética Editorial Clara e Paleta** | Tokens `ink/surface/line/muted/brand/brand-dark/brand-light/whatsapp` no `tailwind.config.js`; verde em todos os `[data-whatsapp]` (cabeçalho, cards, rodapé e flutuante), com texto `#111111` (v1.2.0); contrastes verificados em research §2 | **PASS** |
 | **III. Conversão via WhatsApp** | CTAs de WhatsApp no cabeçalho, em todos os cards, no rodapé e no flutuante; mensagens por origem com o nome do produto; o botão flutuante não cobre conteúdo | **PASS** |
 | **IV. Carregamento Ultra-Rápido** | WebP com `srcset`, preload e `fetchpriority` na Hero; `loading="lazy"` abaixo da primeira dobra; scripts com `defer`; fonte variável local com preload; sem CDNs | **PASS** |
 | **V. Arquitetura Leve e Semântica** | `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<figure>`, `<footer>`; Tailwind compilado; JS puro em 2 arquivos | **PASS** |
@@ -96,8 +96,7 @@ site/                                # Entregável publicado
         ├── hero/hero-{768,1280,1920}.webp
         ├── sobre.webp
         ├── categorias/{masculino,feminino,acessorios}.webp
-        ├── produtos/{id}.webp       # 600×800
-        └── insta/look-{1..6}.webp   # 600×600
+        └── produtos/{id}.webp       # 600×800
 ```
 
 **Structure Decision**: Segue a árvore da Constituição v1.1.0 (`site/assets/{css,js,fonts,img}`), com os arquivos de build do Tailwind na raiz. `config.js` e `main.js` substituem o par `catalog.js`/`main.js` do plano anterior para separar dados (editados pela loja) de comportamento.

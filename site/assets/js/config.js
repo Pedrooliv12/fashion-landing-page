@@ -17,7 +17,7 @@ window.StoreConfig = {
     footer: "Olá! Vim pelo site da Scorpion gytano e gostaria de falar com a equipe.",
     floating: "Olá! Estou no site da Scorpion gytano e gostaria de tirar algumas dúvidas sobre as coleções.",
     product: (name) =>
-      `Olá! Tenho interesse na peça *${name}* da Scorpion gytano. Poderiam me passar os tamanhos disponíveis e as opções de entrega?`,
+      `Olá! Tenho interesse na peça *${name}* da Scorpion gytano. Poderiam me passar os tamanhos disponíveis?`,
   },
 
   instagramHandle: "@scorpion.gytano",

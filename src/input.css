@@ -38,6 +38,11 @@
     @apply inline-flex min-h-11 items-center justify-center gap-2 bg-brand px-8 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-brand-dark;
   }
 
+  /* Botões que abrem o WhatsApp: verde oficial com texto escuro (Constituição v1.2.0, Princípio II) */
+  .btn-whatsapp {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 bg-whatsapp px-8 py-3 text-sm font-semibold uppercase tracking-wider text-ink transition-opacity hover:opacity-90;
+  }
+
   .container-page {
     @apply mx-auto max-w-[1200px] px-5;
   }

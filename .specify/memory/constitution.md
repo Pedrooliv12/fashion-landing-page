@@ -30,7 +30,7 @@ O design visual DEVE manter uma apresentação moderna, editorial e focada na vi
   | Vermelho sobre escuro | `#EF4444` | Texto e destaques vermelhos sobre fundo `#111111` |
 
 - O vermelho DEVE ser usado com moderação, restrito a ações e destaques, para preservar sua função de direcionar o olhar.
-- **Exceção WhatsApp**: o botão flutuante e o botão de atendimento do cabeçalho PODEM usar o verde oficial `#25D366`. Todo texto sobre esse verde DEVE ser `#111111` (branco sobre `#25D366` tem apenas 1,98:1 de contraste). O ícone branco do WhatsApp é permitido por ser o logotipo oficial. Nenhum outro elemento DEVE usar o verde.
+- **Exceção WhatsApp**: os botões que abrem o WhatsApp (atendimento do cabeçalho, "Garantir no WhatsApp" dos cards de produto, "Falar no WhatsApp" do rodapé e botão flutuante) PODEM usar o verde oficial `#25D366`. Todo texto sobre esse verde DEVE ser `#111111` (branco sobre `#25D366` tem apenas 1,98:1 de contraste). O ícone branco do WhatsApp é permitido por ser o logotipo oficial. Nenhum outro elemento DEVE usar o verde.
 - Todo par de texto e fundo DEVE atender WCAG AA (contraste mínimo de 4,5:1 para texto normal e 3:1 para texto grande).
 - As imagens de vestuário e acessórios DEVEM apresentar alta definição e enquadramento padronizado, mantendo o protagonismo estético da interface.
 - O layout DEVE empregar respiro visual generoso (espaçamento consistente e tipografia limpa), sem poluição por excesso de efeitos gráficos concorrentes.
@@ -131,5 +131,6 @@ Toda entrega ou alteração no projeto DEVE satisfazer os seguintes critérios d
 |--------|------|---------|
 | 1.0.0 | 2026-10-06 | Ratificação inicial |
 | 1.1.0 | 2026-10-08 | Princípio II: tema claro editorial, tokens de cor, exceção do verde WhatsApp e contraste WCAG AA. Estrutura: `site/assets/fonts/` e arquivos de build do Tailwind na raiz. Nova seção "Referência Visual" (template aprovado pelo cliente). |
+| 1.2.0 | 2026-10-08 | Princípio II: exceção do verde WhatsApp ampliada para todos os botões que abrem o WhatsApp (inclusive os cards de produto e o rodapé), a pedido do responsável do projeto: o verde identifica o canal de compra. |
 
-**Version**: 1.1.0 | **Ratified**: 2026-10-06 | **Last Amended**: 2026-10-08
+**Version**: 1.2.0 | **Ratified**: 2026-10-06 | **Last Amended**: 2026-10-08

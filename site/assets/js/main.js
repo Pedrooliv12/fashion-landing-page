@@ -138,7 +138,7 @@
     media.append(
       createBuyButton(
         product,
-        "absolute inset-x-0 bottom-0 z-10 hidden min-h-11 translate-y-full items-center justify-center gap-2 bg-brand px-4 text-xs font-semibold uppercase tracking-wider text-white hover:bg-brand-dark focus-visible:translate-y-0 group-hover:translate-y-0 group-focus-within:translate-y-0 motion-safe:transition-transform motion-safe:duration-300 pointer-fine:flex"
+        "absolute inset-x-0 bottom-0 z-10 hidden min-h-11 translate-y-full items-center justify-center gap-2 bg-whatsapp px-4 text-xs font-semibold uppercase tracking-wider text-ink hover:opacity-90 focus-visible:translate-y-0 group-hover:translate-y-0 group-focus-within:translate-y-0 motion-safe:transition-transform motion-safe:duration-300 pointer-fine:flex"
       )
     );
 
@@ -155,7 +155,7 @@
     touchWrapper.append(
       createBuyButton(
         product,
-        "flex min-h-11 w-full items-center justify-center gap-2 bg-brand px-3 py-2 text-center text-xs font-semibold uppercase leading-tight tracking-wider text-white hover:bg-brand-dark"
+        "flex min-h-11 w-full items-center justify-center gap-2 bg-whatsapp px-3 py-2 text-center text-xs font-semibold uppercase leading-tight tracking-wider text-ink hover:opacity-90"
       )
     );
     info.append(touchWrapper);

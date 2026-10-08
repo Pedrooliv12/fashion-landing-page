@@ -64,7 +64,7 @@ Imagem: `<img id="hero-image" fetchpriority="high" srcset="…768w, …1280w, �
 
 ## 4. Diferenciais (`#diferenciais`)
 
-Grade `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`; cada item é um `<article>` com ícone SVG `text-brand` (`aria-hidden`), `<h3>` e `<p class="text-muted">`. Os textos seguem exatamente o FR-013.
+Grade `grid-cols-1 md:grid-cols-3` (3 itens; sem "Envio", a loja não entrega); cada item é um `<article>` com ícone SVG `text-brand` (`aria-hidden`), `<h3>` e `<p class="text-muted">`. Os textos seguem exatamente o FR-013.
 
 ---
 
@@ -104,7 +104,7 @@ article.group (bg-white)
                            pointer-fine:hidden, largura total, mínimo 44px de altura,
                            px-3 text-xs leading-tight text-center (quebra em 2 linhas se preciso)
 ```
-Ambos os botões: `bg-brand hover:bg-brand-dark text-white uppercase`, texto "Garantir no WhatsApp" + ícone. A variante `pointer-fine` é `@media (hover: hover) and (pointer: fine)`, registrada como variante no `tailwind.config.js`.
+Ambos os botões: `bg-whatsapp hover:opacity-90 text-ink uppercase` (verde oficial, Constituição v1.2.0), texto "Garantir no WhatsApp" + ícone. A variante `pointer-fine` é `@media (hover: hover) and (pointer: fine)`, registrada como variante no `tailwind.config.js`.
 
 ---
 
@@ -117,7 +117,7 @@ Ambos os botões: `bg-brand hover:bg-brand-dark text-white uppercase`, texto "Ga
 | `data-whatsapp` | Onde | Mensagem (`StoreConfig.messages`) |
 |---|---|---|
 | `header` | Cabeçalho | "Olá! Gostaria de um atendimento personalizado na Scorpion gytano." |
-| `product` | Cards | "Olá! Tenho interesse na peça *{nome}* da Scorpion gytano. Poderiam me passar os tamanhos disponíveis e as opções de entrega?" |
+| `product` | Cards | "Olá! Tenho interesse na peça *{nome}* da Scorpion gytano. Poderiam me passar os tamanhos disponíveis?" |
 | `footer` | Rodapé | "Olá! Vim pelo site da Scorpion gytano e gostaria de falar com a equipe." |
 | `floating` | Botão flutuante | "Olá! Estou no site da Scorpion gytano e gostaria de tirar algumas dúvidas sobre as coleções." |
 
@@ -132,7 +132,7 @@ Banner de largura total no padrão `.banner-promo` do template: imagem `sobre.we
 ## 9. Depoimentos & Instagram (`#depoimentos`)
 
 - **Depoimentos**: grade `md:grid-cols-3`; cada `<figure>` tem estrelas SVG `text-brand` com `aria-label="Nota 5 de 5"`, `<blockquote>` e `<figcaption>` (nome + localidade em `text-muted`). Borda `border-line`, sem sombra.
-- **Instagram**: título "Siga @scorpion.gytano" + mosaico `grid-cols-3 md:grid-cols-6` de imagens quadradas, cada uma um link para `instagramUrl` com `aria-label`. Botão "Seguir no Instagram" com contorno `border-ink`.
+- **Instagram**: rótulo "Comunidade", título "Siga @scorpion.gytano", convite em `text-muted` e botão `a[data-social="instagram"]` "Seguir no Instagram" com contorno `border-ink`. Sem mosaico de fotos (removido no ajuste pós-implementação).
 
 ---
 
@@ -141,7 +141,7 @@ Banner de largura total no padrão `.banner-promo` do template: imagem `sobre.we
 `bg-ink`, texto `text-line` (`#E7E5E4`), títulos brancos, grade `sm:grid-cols-2 lg:grid-cols-4`:
 1. Logo (versão clara) + frase da marca + ícones Instagram/TikTok (`aria-label`, 44×44px).
 2. "Navegação": links para todas as seções.
-3. "Atendimento": `openingHours` + `a[data-whatsapp="footer"]` em `bg-brand text-white`.
+3. "Atendimento": `openingHours` + `a[data-whatsapp="footer"]` com `.btn-whatsapp` (`bg-whatsapp text-ink`, Constituição v1.2.0).
 4. "Pagamento": "Pix e Cartão de Crédito".
 
 Linha de copyright: "© 2026 Scorpion gytano. Todos os direitos reservados." O contêiner tem `pb-24 md:pb-8` para o botão flutuante não cobrir o conteúdo.

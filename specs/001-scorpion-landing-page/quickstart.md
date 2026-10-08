@@ -39,7 +39,7 @@ Acesse `http://localhost:3000`. **Não abra o `index.html` direto pelo arquivo**
 ### V1. Estrutura e ordem (FR-019)
 1. Em 375px, role a página de cima a baixo.
 2. **Esperado**: Faixa superior → Cabeçalho → Hero → Diferenciais → Categorias → Coleções → Sobre a Marca → Depoimentos & Instagram → Rodapé.
-3. **Esperado**: fundo predominantemente branco e cinza claro; vermelho só em botões e destaques; verde só no botão do cabeçalho e no flutuante.
+3. **Esperado**: fundo predominantemente branco e cinza claro; vermelho só em botões e destaques; verde em todos os botões que abrem o WhatsApp (cabeçalho, cards de produto, rodapé e flutuante) e em nenhum outro lugar.
 
 ### V2. Hero (US2)
 1. Em 375px, confira a ordem: logo (no cabeçalho) → headline → texto corrido → botão vermelho, com o botão visível sem rolar.

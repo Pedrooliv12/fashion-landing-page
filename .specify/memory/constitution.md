@@ -1,23 +1,3 @@
-<!--
-SYNC IMPACT REPORT
-==================
-- Version change: Unversioned Scaffold -> 1.0.0
-- Modified principles:
-  * [PRINCIPLE_1_NAME] -> I. Mobile-First & Responsividade Absoluta (NON-NEGOTIABLE)
-  * [PRINCIPLE_2_NAME] -> II. Estética Visual Limpa, Sofisticada e Paleta de Alto Contraste
-  * [PRINCIPLE_3_NAME] -> III. Conversão Contínua e Integrada via WhatsApp
-  * [PRINCIPLE_4_NAME] -> IV. Carregamento Ultra-Rápido e Otimização de Mídias
-  * [PRINCIPLE_5_NAME] -> V. Arquitetura Leve e Semântica (HTML5 + Tailwind CSS + Vanilla JS)
-  * [PRINCIPLE_6_NAME] -> VI. Localização pt-BR e Excelência em SEO/Open Graph
-- Added sections:
-  * Estrutura de Diretórios e Padrões Técnicos (substituindo [SECTION_2_NAME])
-  * Diretrizes de Qualidade e Critérios de Aceite (substituindo [SECTION_3_NAME])
-- Removed sections:
-  * None
-- Follow-up TODOs:
-  * None
--->
-
 # Scorpion gytano Constitution
 
 ## Core Principles
@@ -32,16 +12,30 @@ A landing page DEVE ser concebida e desenvolvida com abordagem Mobile-First estr
 
 **Rationale**: O público-alvo de vestuário e moda originado de redes sociais (Instagram, TikTok) e links diretos acessa massivamente via smartphones; qualquer falha na ergonomia móvel acarreta perda imediata de conversão.
 
-### II. Estética Visual Limpa, Sofisticada e Paleta de Alto Contraste
+### II. Estética Editorial Clara, Sofisticada e Paleta de Alto Contraste
 
-O design visual DEVE manter uma apresentação moderna, elegante e focada na vitrine de produtos e coleções, evitando qualquer tipo de poluição visual.
+O design visual DEVE manter uma apresentação moderna, editorial e focada na vitrine de produtos e coleções, evitando qualquer tipo de poluição visual. O tema base é CLARO.
 
-- A paleta de cores DEVE adotar o vermelho marcante (#DC2626 / #B91C1C) como cor primária de destaque e chamada para ação (CTAs).
-- As cores de suporte e fundo DEVEM ser compostas estritamente por tons neutros: preto (#000000 / #111111) para elegância e sobriedade, combinado com branco e cinza claro para alto contraste e legibilidade impecável dos textos.
+- A paleta DEVE se limitar aos seguintes tokens:
+
+  | Papel | Cor | Uso |
+  |-------|-----|-----|
+  | Fundo | `#FFFFFF` | Fundo principal da página |
+  | Superfície | `#F5F5F4` | Seções alternadas e fundos de vitrine |
+  | Borda | `#E7E5E4` | Divisórias e contornos de cards |
+  | Tinta | `#111111` | Títulos e texto principal; fundo da faixa superior e do rodapé |
+  | Texto secundário | `#57534E` | Descrições, materiais, categorias |
+  | Vermelho da marca | `#DC2626` | CTAs e destaques (badges, rótulos, sublinhados) |
+  | Vermelho escuro | `#B91C1C` | Hover de CTAs e texto vermelho em tamanho pequeno |
+  | Vermelho sobre escuro | `#EF4444` | Texto e destaques vermelhos sobre fundo `#111111` |
+
+- O vermelho DEVE ser usado com moderação, restrito a ações e destaques, para preservar sua função de direcionar o olhar.
+- **Exceção WhatsApp**: o botão flutuante e o botão de atendimento do cabeçalho PODEM usar o verde oficial `#25D366`. Todo texto sobre esse verde DEVE ser `#111111` (branco sobre `#25D366` tem apenas 1,98:1 de contraste). O ícone branco do WhatsApp é permitido por ser o logotipo oficial. Nenhum outro elemento DEVE usar o verde.
+- Todo par de texto e fundo DEVE atender WCAG AA (contraste mínimo de 4,5:1 para texto normal e 3:1 para texto grande).
 - As imagens de vestuário e acessórios DEVEM apresentar alta definição e enquadramento padronizado, mantendo o protagonismo estético da interface.
 - O layout DEVE empregar respiro visual generoso (espaçamento consistente e tipografia limpa), sem poluição por excesso de efeitos gráficos concorrentes.
 
-**Rationale**: A percepção de sofisticação e valor de uma marca de moda está diretamente ligada à clareza visual e à elegância da vitrine; o vermelho direciona o olhar para a ação sem sobrecarregar a experiência.
+**Rationale**: A percepção de sofisticação e valor de uma marca de moda está diretamente ligada à clareza visual e à elegância da vitrine. O tema claro editorial foi aprovado pelo cliente; o vermelho direciona o olhar para a ação sem sobrecarregar a experiência, e o verde oficial torna o canal de WhatsApp reconhecível de imediato.
 
 ### III. Conversão Contínua e Integrada via WhatsApp
 
@@ -94,11 +88,21 @@ site/
 └── assets/
     ├── css/                    # Estilos personalizados e/ou compilação de Tailwind CSS
     ├── js/                     # Scripts Vanilla JS (menu mobile, filtros, links WhatsApp)
+    ├── fonts/                  # Fontes self-hosted em formato .woff2
     └── img/                    # Imagens de coleções, produtos (WebP), logo e banners
 ```
 
 - Nomes de arquivos DEVEM utilizar convenção `kebab-case` minúscula e sem caracteres especiais ou acentuação (ex: `hero-banner.webp`, `menu-mobile.js`).
 - Não DEVEM ser criados arquivos fora dessa estrutura para o entregável do site estático.
+- Arquivos de build do Tailwind CSS (`package.json`, `tailwind.config.js`, `src/input.css`) DEVEM ficar na raiz do repositório, fora de `site/`. Apenas o CSS compilado e minificado é publicado em `site/assets/css/`.
+
+## Referência Visual
+
+O layout DEVE seguir como referência visual o template aprovado pelo cliente: [nodeckagency/clothing-store-landing-page](https://github.com/nodeckagency/clothing-store-landing-page) (estilo editorial claro, cantos retos, títulos em caixa alta com espaçamento entre letras, faixa de benefícios com ícones, cards de categoria com imagem alta, rodapé escuro em colunas).
+
+- O template é referência visual, não fonte de código: o repositório não possui LICENSE, portanto o código DEVE ser reescrito em Tailwind CSS e Vanilla JS, sem cópia literal.
+- Os elementos de e-commerce do template (carrinho, contador de itens, busca, favoritos) e a newsletter NÃO DEVEM ser incluídos, pois a conversão ocorre exclusivamente via WhatsApp (Princípio III).
+- Dependências externas do template (Font Awesome via CDN, Google Fonts via CDN, imagens do Unsplash) DEVEM ser substituídas por ícones SVG inline, fontes self-hosted e imagens próprias da marca (Princípio IV).
 
 ## Diretrizes de Qualidade e Critérios de Aceite
 
@@ -121,4 +125,11 @@ Toda entrega ou alteração no projeto DEVE satisfazer os seguintes critérios d
   - `PATCH`: Correções de texto, ajustes de estilo e esclarecimentos de termos sem alteração de escopo.
 - **Auditoria de Conformidade**: Cada pull request ou incremento de código deve passar por verificação de conformidade com os princípios desta constituição antes da aprovação final.
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-06 | **Last Amended**: 2026-10-06
+### Histórico de Emendas
+
+| Versão | Data | Mudança |
+|--------|------|---------|
+| 1.0.0 | 2026-10-06 | Ratificação inicial |
+| 1.1.0 | 2026-10-08 | Princípio II: tema claro editorial, tokens de cor, exceção do verde WhatsApp e contraste WCAG AA. Estrutura: `site/assets/fonts/` e arquivos de build do Tailwind na raiz. Nova seção "Referência Visual" (template aprovado pelo cliente). |
+
+**Version**: 1.1.0 | **Ratified**: 2026-10-06 | **Last Amended**: 2026-10-08

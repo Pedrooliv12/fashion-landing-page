@@ -1,86 +1,85 @@
 # Quickstart & Validation Guide: Landing Page Scorpion gytano
 
-**Feature**: `001-scorpion-landing-page`  
-**Date**: 2026-10-07  
+**Feature**: `001-scorpion-landing-page`
+**Date**: 2026-10-08 (revisão: tema claro, build do Tailwind, validações de qualidade)
 **Status**: Ready
 
-Este guia descreve os pré-requisitos, instruções de execução local e o roteiro passo a passo de validação para a landing page da **Scorpion gytano**.
+Como rodar a página localmente e o roteiro de validação ponta a ponta. Os detalhes dos componentes estão em [contracts/ui-contracts.md](contracts/ui-contracts.md).
 
 ---
 
 ## 1. Pré-Requisitos
 
-- Navegador web moderno (Chrome, Edge, Firefox ou Safari).
-- Node.js (versão 18+) ou qualquer servidor estático local (opcional, para visualização de mídias e fontes locais).
-- Terminal PowerShell ou Bash.
+- Node.js 18+ (usado só para compilar o Tailwind e converter imagens).
+- Google Chrome (DevTools e Lighthouse).
+
+## 2. Instalação e Build
+
+Na raiz do repositório:
+
+```powershell
+npm install          # instala tailwindcss@3.4.17 e sharp-cli
+npm run build        # gera site/assets/css/styles.css minificado
+```
+
+Durante o desenvolvimento, `npm run dev` recompila o CSS a cada alteração.
+
+## 3. Servir Localmente
+
+```powershell
+npx serve site -p 3000
+```
+
+Acesse `http://localhost:3000`. **Não abra o `index.html` direto pelo arquivo** (`file://`): o preload de fontes e alguns recursos não funcionam nesse modo.
 
 ---
 
-## 2. Inicialização e Execução Local
+## 4. Roteiro de Validação
 
-Como se trata de uma arquitetura estática leve (HTML5, Tailwind CSS e Vanilla JS em conformidade com o Princípio V da Constituição):
+### V1. Estrutura e ordem (FR-019)
+1. Em 375px, role a página de cima a baixo.
+2. **Esperado**: Faixa superior → Cabeçalho → Hero → Diferenciais → Categorias → Coleções → Sobre a Marca → Depoimentos & Instagram → Rodapé.
+3. **Esperado**: fundo predominantemente branco e cinza claro; vermelho só em botões e destaques; verde só no botão do cabeçalho e no flutuante.
 
-### Opção A: Execução via Servidor Local Rápido (Recomendado)
-Execute na raiz do projeto:
-```powershell
-npx -y serve site -p 3000
-```
-Ou usando Python:
-```powershell
-python -m http.server 3000 --directory site
-```
-Acesse no navegador: `http://localhost:3000`
+### V2. Hero (US2)
+1. Em 375px, confira a ordem: logo (no cabeçalho) → headline → texto corrido → botão vermelho, com o botão visível sem rolar.
+2. Clique em "Ver Coleção & Falar com Vendedor". **Esperado**: rola suavemente até a vitrine.
+3. Clique em "Atendimento no WhatsApp" no cabeçalho. **Esperado**: abre o WhatsApp com a mensagem `header` (contrato §7).
 
-### Opção B: Abertura Direta do Arquivo
-Abra o arquivo `site/index.html` diretamente em seu navegador preferido.
+### V3. Vitrine e categorias (US1)
+1. Clique em cada filtro. **Esperado**: só os produtos correspondentes aparecem; "Lançamentos" mostra produtos de categorias diferentes; o botão ativo tem `aria-pressed="true"`.
+2. Volte para Categorias e clique em "Feminino". **Esperado**: rola até a vitrine com o filtro "Feminino" ativo.
+3. No desktop, passe o mouse sobre um card. **Esperado**: zoom suave e botão deslizando sobre a imagem. Use `Tab` até o card: o botão também aparece.
+4. No modo de toque do DevTools (iPhone), **esperado**: o botão "Garantir no WhatsApp" já está visível abaixo das informações, e um toque abre o WhatsApp.
+5. **Esperado**: a mensagem contém o nome exato da peça, com acentos preservados.
 
----
+### V4. Navegação (SC-005, FR-004)
+1. Clique em cada link do cabeçalho. **Esperado**: o título da seção aparece inteiro, abaixo do cabeçalho fixo.
+2. Em 375px, abra o menu, clique em um link. **Esperado**: o menu fecha e a página rola. A tecla `Esc` também fecha o menu.
 
-## 3. Roteiro de Validação Ponta a Ponta
+### V5. Botão flutuante e rodapé (US4)
+1. Role até o rodapé. **Esperado**: o botão flutuante não cobre nenhum link ou texto do rodapé.
+2. Clique nele e no botão do rodapé. **Esperado**: mensagens `floating` e `footer`.
+3. No DevTools → Rendering → `prefers-reduced-motion: reduce`. **Esperado**: sem pulso, sem zoom e rolagem instantânea.
 
-Execute os testes manuais e funcionais a seguir para certificar a conformidade do entregável:
+### V6. Responsividade (SC-003, SC-004)
+1. Teste as larguras 320, 375, 414, 768, 1024, 1440 e **2560px**.
+2. **Esperado**: nenhuma barra de rolagem horizontal. No console: `document.documentElement.scrollWidth <= window.innerWidth` deve retornar `true`.
+3. **Esperado**: todos os alvos de toque com pelo menos 44×44px (Lighthouse → Accessibility → "Touch targets").
 
-### Validação 1: Hero Section & Hierarquia Mobile-First
-1. Abra a página redimensionando o navegador para 375px (modo de emulação mobile).
-2. **Verificar**: A ordem visual exibida no topo é estritamente:
-   1. Logotipo Scorpion gytano;
-   2. Headline: *"Estilo, Atitude e Exclusividade em Cada Peça"*;
-   3. Texto corrido de apresentação;
-   4. Botão CTA vermelho: *"Ver Coleção & Falar com Vendedor"*.
-3. **Verificar**: O fundo escuro (`#0A0A0A`) mescla harmoniosamente com a imagem de capa através de gradientes e o logotipo apresenta alto contraste e legibilidade.
+### V7. Lighthouse (SC-007)
+1. DevTools → Lighthouse → modo **Mobile**, categorias Performance, Accessibility, Best Practices e SEO.
+2. **Esperado**: ≥ 90 em todas. LCP < 1,5s e CLS = 0 em "Performance".
 
-### Validação 2: Vitrine e Filtragem de Produtos
-1. Role a página até a seção **Coleções**.
-2. Clique nos botões de filtro: *"Todos"*, *"Masculino"*, *"Feminino"*, *"Acessórios"*, *"Lançamentos"*.
-3. **Verificar**: Apenas os produtos associados à categoria selecionada permanecem visíveis, com transição suave.
-4. Passe o cursor sobre o card de um produto (em desktop) ou toque nele (em mobile).
-5. **Verificar**: A imagem do produto realiza zoom suave (`scale-110`) sem distorções.
-6. Clique no botão *"Garantir no WhatsApp"*.
-7. **Verificar**: Uma nova aba é aberta direcionando para o WhatsApp com a mensagem contendo o nome exato do produto selecionado.
+### V8. Contraste (SC-008)
+1. Lighthouse → Accessibility: sem o alerta "Background and foreground colors do not have a sufficient contrast ratio".
+2. Confira com o seletor de cor do DevTools o texto do botão verde (`#111111` sobre `#25D366`, cerca de 9,5:1).
 
-### Validação 3: Navegação do Cabeçalho e Smooth Scroll
-1. No cabeçalho, clique nos links: *"Início"*, *"Coleções"*, *"Sobre a Marca"*, *"Diferenciais"*, *"Depoimentos"*.
-2. **Verificar**: A página desliza suavemente até a seção correspondente sem saltos bruscos e mantendo o cabeçalho visível.
-3. Em resolução mobile (< 768px), clique no ícone de menu hamburger.
-4. **Verificar**: O menu se expande com áreas de clique amplas (mínimo 44x44px). Ao clicar em um link, o menu se fecha e a página rola para a seção.
+### V9. Assets, fontes e prévia social
+1. DevTools → Network → filtro *Img*: todas as imagens exibidas são `.webp` (ou `.svg` no logo) e carregaram (status 200).
+2. Filtro *Font*: apenas `montserrat-latin-variable.woff2`, servida de `assets/fonts/`; nenhuma requisição para domínios externos.
+3. Após publicar, cole a URL em `https://www.opengraph.xyz/` ou envie para si no WhatsApp. **Esperado**: título, descrição e `og-image.jpg` aparecem.
 
-### Validação 4: Botão Flutuante do WhatsApp
-1. Role a página até o meio e até o rodapé.
-2. **Verificar**: O botão do WhatsApp permanece fixo no canto inferior direito (`fixed bottom-5 right-5 z-50`).
-3. **Verificar**: A animação de pulso suave está ativa e visível em segundo plano do botão.
-4. Clique no botão.
-5. **Verificar**: O chat do WhatsApp é aberto com a mensagem de atendimento geral.
-
-### Validação 5: Responsividade e Ausência de Scroll Horizontal
-1. No console do desenvolvedor (F12), ative o modo responsivo e teste as larguras:
-   - `320px` (smartphones muito compactos)
-   - `375px` / `390px` / `414px` (iPhones e Androids padrão)
-   - `768px` (tablets verticais)
-   - `1024px` e `1440px` (laptops e desktops)
-2. **Verificar**: Não há barra de rolagem horizontal (`overflow-x` zero) em nenhuma das resoluções.
-3. **Verificar**: Textos mantêm quebras limpas e botões mantêm touch targets confortáveis.
-
-### Validação 6: Self-Hosting de Fontes & Performance
-1. Na aba *Network* do DevTools, recarregue a página (F5).
-2. Filtre por *Font*.
-3. **Verificar**: As fontes ("Outfit" / "Montserrat") são carregadas a partir de `assets/fonts/` (sem requisições bloqueantes externas para servidores de terceiros).
+### V10. Checagem antes de publicar
+1. Procure por `EXEMPLO` no projeto: `git grep -n "EXEMPLO" site/`.
+2. **Esperado**: nenhum resultado. Número de WhatsApp, fotos e depoimentos já são os reais da loja.

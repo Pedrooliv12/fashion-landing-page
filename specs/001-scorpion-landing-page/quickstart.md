@@ -84,3 +84,27 @@ Acesse `http://localhost:3000`. **Não abra o `index.html` direto pelo arquivo**
 ### V10. Checagem antes de publicar
 1. Procure por `EXEMPLO` no projeto: `git grep -n "EXEMPLO" site/`.
 2. **Esperado**: nenhum resultado. Número de WhatsApp, fotos e depoimentos já são os reais da loja.
+
+---
+
+## Resultado da validação (2026-10-08)
+
+Feita localmente (`npx serve site`) com Chrome headless (screenshots em iframes de 320, 375, 768, 1440 e 2560px), Lighthouse 12 e testes manuais do responsável do projeto (menu, filtros, cards de categoria e botões "Garantir" no modo toque e com mouse).
+
+| Item | Status | Observação |
+|---|---|---|
+| V1 Estrutura e ordem | ✅ | Ordem do FR-019; verde só no cabeçalho e no botão flutuante |
+| V2 Hero | ✅ | Em 375×667 o botão aparece sem rolar, acima do botão flutuante; em 320×568 o conteúdo cresce sem cortes; LCP = `#hero-image` |
+| V3 Vitrine e categorias | ✅ | Masculino 4, Feminino 3, Acessórios 3, Lançamentos 3 (uma de cada categoria); mensagem com o nome e os acentos da peça |
+| V4 Navegação | ✅ | Títulos visíveis abaixo do cabeçalho; links com âncora abertos direto (ex: `/#sobre`) corrigidos depois da montagem da vitrine |
+| V5 Botão flutuante e rodapé | ✅ | Mensagens `footer` e `floating` corretas; `pb-24` no rodapé; animações sob `motion-safe:` (verificado no código) |
+| V6 Responsividade | ✅ | Sem rolagem horizontal visível de 320 a 2560px; alvos de toque ≥ 44px |
+| V7 Lighthouse | ✅ / ⚠️ | Mobile: 100 / 100 / 100 / 100, CLS 0, FCP 0,8s, **LCP 1,7s** (meta do plano: 1,5s; ainda "bom" pelo Core Web Vitals, até 2,5s). Desktop: 100 / 100 / 100 / 100, LCP 0,5s |
+| V8 Contraste | ✅ | Acessibilidade 100; Hero e Sobre com `bg-ink/60`; nenhum texto vermelho sobre foto |
+| V9 Assets e fontes | ✅ / ⏳ | Imagens WebP (logo e favicon em SVG), fonte local, nenhuma requisição externa. Prévia social pendente até a publicação |
+| V10 Checagem antes de publicar | ❌ esperado | Conteúdo `EXEMPLO` ainda presente: número, logo, fotos, depoimentos, texto do Sobre, TikTok, horário e URL. Pendência da loja (ver README) |
+
+**Melhorias opcionais identificadas pelo Lighthouse** (não afetam a nota):
+- Imagens de produtos e do Instagram são servidas em 600px mesmo quando exibidas menores no desktop (cerca de 500 KB evitáveis). Vale gerar versões de 300px com `srcset` ao trocar pelas fotos reais.
+- Cache dos arquivos estáticos: é configuração da hospedagem, a definir na publicação.
+- LCP no mobile: o CSS (13 KB) bloqueia a renderização por cerca de 110ms. Inserir o CSS crítico no `<head>` traria o LCP para perto de 1,5s, ao custo de uma etapa extra no build.

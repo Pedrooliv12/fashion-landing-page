@@ -31,6 +31,21 @@
     });
   }
 
+  /* ---------- Redes sociais e dados da loja ---------- */
+
+  function hydrateStoreInfo(root) {
+    const socialUrls = { instagram: config.instagramUrl, tiktok: config.tiktokUrl };
+    root.querySelectorAll("[data-social]").forEach((anchor) => {
+      const url = socialUrls[anchor.dataset.social];
+      if (url) setExternalLink(anchor, url);
+    });
+
+    root.querySelectorAll("[data-store]").forEach((node) => {
+      const value = config[node.dataset.store];
+      if (value) node.textContent = value;
+    });
+  }
+
   /* ---------- Menu mobile ---------- */
 
   function initMobileMenu() {
@@ -84,7 +99,8 @@
     const anchor = el("a", className);
     anchor.dataset.whatsapp = "product";
     anchor.dataset.productName = product.name;
-    anchor.setAttribute("aria-label", `Garantir ${product.name} no WhatsApp`);
+    // O nome acessível começa com o texto visível (WCAG 2.5.3) e identifica a peça
+    anchor.setAttribute("aria-label", `Garantir no WhatsApp: ${product.name}`);
     setExternalLink(anchor, buildWhatsAppLink("product", product.name));
     anchor.insertAdjacentHTML("afterbegin", WHATSAPP_ICON);
     anchor.append(el("span", "", "Garantir no WhatsApp"));
@@ -108,7 +124,7 @@
 
     const image = el(
       "img",
-      "h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 group-hover:scale-105"
+      "h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105"
     );
     image.src = product.image;
     image.alt = product.alt;
@@ -196,7 +212,13 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     hydrateWhatsAppLinks(document);
+    hydrateStoreInfo(document);
     initMobileMenu();
     initFilters();
+
+    // Links abertos com âncora (ex: .../#sobre): o navegador rola antes de a vitrine ser
+    // montada, e os cards empurram a seção para baixo. Corrige a posição depois de renderizar.
+    const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) target.scrollIntoView({ block: "start", behavior: "instant" });
   });
 })();

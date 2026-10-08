@@ -14,16 +14,18 @@ Contratos da interface: ordem das seções, IDs, atributos `data-*` usados pelo 
 |---|---|---|---|
 | 1 | Faixa superior | `#top-bar` | `bg-ink`, texto branco |
 | 2 | Cabeçalho | `<header id="site-header">` | `bg-white`, borda inferior `border-line`, `sticky top-0 z-40` |
-| 3 | Hero | `<section id="inicio">` | Foto + `bg-ink/45` |
+| 3 | Hero | `<section id="inicio">` | Foto + `bg-ink/60` |
 | 4 | Diferenciais | `<section id="diferenciais">` | `bg-white`, borda inferior `border-line` |
 | 5 | Categorias | `<section id="categorias">` | `bg-white` |
 | 6 | Coleções | `<section id="colecoes">` | `bg-surface` |
-| 7 | Sobre a Marca | `<section id="sobre">` | Foto + `bg-ink/55` |
+| 7 | Sobre a Marca | `<section id="sobre">` | Foto + `bg-ink/60` |
 | 8 | Depoimentos & Instagram | `<section id="depoimentos">` | `bg-white` |
 | 9 | Rodapé | `<footer id="rodape">` | `bg-ink` |
 | — | Botão flutuante | `#floating-whatsapp` | `bg-whatsapp` |
 
 Todas as `<section>` com `scroll-mt-24`. Elementos `<main>` envolvem as seções 3 a 8.
+
+**Texto sobre fotos** (Hero, Sobre, Categorias): sempre branco, com sobreposição mínima `bg-ink/60` (ou degradê `from-ink/70` sob o texto). Vermelho em texto sobre foto é proibido (ver [research.md §2](../research.md)).
 
 ### Padrão de título de seção (do template)
 ```text
@@ -39,22 +41,24 @@ Todas as `<section>` com `scroll-mt-24`. Elementos `<main>` envolvem as seções
 | Elemento | Seletor | Contrato |
 |---|---|---|
 | Logo | `#brand-logo` | Link para `#inicio`; `<img>` com `alt="Scorpion gytano"`, `width`/`height` explícitos |
-| Navegação desktop | `nav[aria-label="Principal"]` | `hidden md:flex`; links `[data-nav-link]` na ordem do FR-002: `#inicio`, `#diferenciais`, `#colecoes`, `#sobre`, `#depoimentos` |
-| Botão WhatsApp | `a[data-whatsapp="header"]` | `bg-whatsapp text-ink`, ícone SVG + texto "Atendimento no WhatsApp" (no mobile, só o ícone com `aria-label`) |
-| Botão menu | `#menu-toggle` | `md:hidden`, mínimo 44×44px, `aria-controls="mobile-menu"`, `aria-expanded="false|true"`, `aria-label="Abrir menu"` / `"Fechar menu"` |
-| Menu mobile | `#mobile-menu` | `hidden` por padrão; mesmos links `[data-nav-link]`, cada um com altura ≥ 44px |
+| Navegação desktop | `nav[aria-label="Principal"]` | `hidden lg:flex` (a partir de 1024px, porque em 768px os 5 links, o logo e o botão somam cerca de 980px); links `[data-nav-link]` na ordem do FR-002: `#inicio`, `#diferenciais`, `#colecoes`, `#sobre`, `#depoimentos` |
+| Botão WhatsApp | `a[data-whatsapp="header"]` | `bg-whatsapp text-ink`, ícone SVG sempre visível; texto "Atendimento no WhatsApp" só a partir de `xl` (`hidden xl:inline`). Abaixo disso, só o ícone, com `aria-label="Atendimento no WhatsApp"`; mínimo 44×44px |
+| Botão menu | `#menu-toggle` | `lg:hidden`, mínimo 44×44px, `aria-controls="mobile-menu"`, `aria-expanded="false|true"`, `aria-label="Abrir menu"` / `"Fechar menu"` |
+| Menu mobile | `#mobile-menu` | `hidden` por padrão (e sempre oculto a partir de `lg`); mesmos links `[data-nav-link]`, cada um com altura ≥ 44px |
 
 ---
 
 ## 3. Hero (`#inicio`)
 
 Ordem visual (o logo do cabeçalho fica imediatamente acima):
-1. `#hero-badge`: "Nova Coleção", com `bg-white/20 backdrop-blur` e caixa alta.
+1. `#hero-badge`: "Nova Coleção", com `bg-ink/60` e caixa alta.
 2. `<h1 id="hero-headline">`: "Estilo, Atitude e Exclusividade em Cada Peça".
 3. `#hero-description`: texto corrido do FR-006.
 4. `a#hero-cta[href="#colecoes"]`: `bg-brand hover:bg-brand-dark text-white`, caixa alta, mínimo 44px de altura, texto "Ver Coleção & Falar com Vendedor".
 
-Imagem: `<img id="hero-image" fetchpriority="high" srcset="…768w, …1280w, …1920w" sizes="100vw">` em `absolute inset-0 object-cover`, sem `loading="lazy"`.
+Contêiner: `relative min-h-[85svh] py-16` (altura **mínima**, nunca fixa, para o conteúdo crescer em 320px sem cortar o botão).
+
+Imagem: `<img id="hero-image" fetchpriority="high" srcset="…768w, …1280w, …1920w" sizes="100vw">` em `absolute inset-0 object-cover`, sem `loading="lazy"`, com sobreposição `bg-ink/60`.
 
 ---
 
@@ -67,7 +71,7 @@ Grade `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`; cada item é um `<article>` c
 ## 5. Categorias (`#categorias`)
 
 3 cards `a.category-card[href="#colecoes"][data-filter-target="{masculino|feminino|acessorios}"]`:
-- Altura `h-96`, imagem `object-cover` com `motion-safe:group-hover:scale-105` e degradê `from-ink/60` para baixo.
+- Altura `h-96`, imagem `object-cover` com `motion-safe:group-hover:scale-105` e degradê `bg-gradient-to-t from-ink/70 via-ink/20 to-transparent`; o texto fica na base, sobre a faixa mais escura.
 - `<h3>` branco e o texto "Ver peças" sublinhado em `border-brand`.
 - Ao clicar: rola até `#colecoes` (via âncora) e o JS aplica o filtro correspondente.
 
@@ -79,7 +83,7 @@ Grade `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`; cada item é um `<article>` c
 `<button data-filter="todos|masculino|feminino|acessorios|lancamentos" aria-pressed="true|false">`; o ativo fica com `bg-ink text-white`, os demais com `border-line`. Altura mínima de 44px; no mobile, rolagem horizontal **dentro** do grupo (`overflow-x-auto`), sem rolagem da página.
 
 ### Grade (`#products-grid`)
-`grid-cols-1 min-[400px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`, com `aria-live="polite"`. Mensagem `#products-empty` quando o filtro não tem produtos.
+`grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`. Com 2 colunas a partir de 480px, cada card tem pelo menos cerca de 208px, o suficiente para o botão de toque. Linha de status `#products-status` (`aria-live="polite"`, `text-sm text-muted`) acima da grade, com o texto "Mostrando {n} peças · {filtro}". Mensagem `#products-empty` quando o filtro não tem produtos.
 
 ### Card (`article.product-card`, gerado pelo `main.js`)
 ```text
@@ -97,7 +101,8 @@ article.group (bg-white)
     ├── p     product.material (text-sm text-muted)
     ├── p     product.price? (font-semibold)
     └── a[data-whatsapp="product"][data-product-name]  ← versão toque
-                           pointer-fine:hidden, largura total, mínimo 44px de altura
+                           pointer-fine:hidden, largura total, mínimo 44px de altura,
+                           px-3 text-xs leading-tight text-center (quebra em 2 linhas se preciso)
 ```
 Ambos os botões: `bg-brand hover:bg-brand-dark text-white uppercase`, texto "Garantir no WhatsApp" + ícone. A variante `pointer-fine` é `@media (hover: hover) and (pointer: fine)`, registrada como variante no `tailwind.config.js`.
 
@@ -120,7 +125,7 @@ Ambos os botões: `bg-brand hover:bg-brand-dark text-white uppercase`, texto "Ga
 
 ## 8. Sobre a Marca (`#sobre`)
 
-Banner de largura total no padrão `.banner-promo` do template: imagem `sobre.webp` (`loading="lazy"`) + `bg-ink/55`, `py-24`, conteúdo centralizado com largura máxima `max-w-2xl`, rótulo, `<h2>` e 2 parágrafos corridos (FR-012) em branco.
+Banner de largura total no padrão `.banner-promo` do template: imagem `sobre.webp` (`loading="lazy"`) + `bg-ink/60`, `py-24`, conteúdo centralizado com largura máxima `max-w-2xl`: rótulo **branco** em caixa alta com um traço decorativo vermelho acima (`h-0.5 w-10 bg-brand mx-auto`), `<h2>` e 2 parágrafos corridos (FR-012), tudo em branco.
 
 ---
 

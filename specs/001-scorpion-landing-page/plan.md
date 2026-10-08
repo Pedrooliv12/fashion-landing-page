@@ -31,6 +31,8 @@ Landing page de página única para a marca **Scorpion gytano**, com conversão 
 - Número de WhatsApp definido em um único lugar (`StoreConfig`).
 - Template usado só como referência visual (sem LICENSE, sem cópia de código).
 
+**Out of Scope**: Publicação/deploy (feita pelo responsável do projeto após a implementação); a URL canônica é provisória.
+
 **Scale/Scope**: 1 página, 9 blocos (FR-019), 8 a 12 produtos em 3 categorias + filtro de lançamentos, 4 diferenciais, 3 a 4 depoimentos, 6 fotos de mosaico.
 
 ## Constitution Check
@@ -106,4 +108,5 @@ site/                                # Entregável publicado
 |---|---|---|
 | Etapa de build (Node + Tailwind CLI) | O Princípio V exige Tailwind, e Performance ≥ 90 exige CSS compilado | O Tailwind via CDN gera CSS em tempo de execução e derruba a nota de Performance |
 | `og-image.jpg` em JPG | Prévias de link no WhatsApp e nas redes têm suporte mais amplo a JPG | Em WebP, a prévia pode não aparecer em alguns apps; a imagem não é exibida na página |
+| `logo.svg`, `logo-light.svg` e `favicon.svg` em SVG | Logos e ícones são vetoriais: o SVG é nítido em qualquer densidade de tela e menor que um WebP equivalente (o Princípio IV pede WebP "prioritariamente", não exclusivamente) | Em WebP, o logo perderia nitidez em telas de alta densidade ou exigiria várias resoluções |
 | Dois botões "Garantir" por card (toque e mouse) | Permite deslizar o botão no desktop, como no template, sem esconder o CTA no toque | Um único botão animado ficaria escondido no toque ou perderia o efeito do template |

@@ -55,7 +55,19 @@ Tokens do Princípio II registrados em `tailwind.config.js` em `theme.extend.col
 | `brand-light` | `#EF4444` | 5,0:1 sobre `#111111` |
 | `whatsapp` | `#25D366` | Texto `#111111` sobre ele: 9,5:1 (branco: 1,98:1, proibido) |
 
-Texto claro no rodapé: token `line` (`#E7E5E4`) sobre `#111111` (≈ 15:1), sem cores fora da paleta. Texto sobre a foto da Hero e do banner Sobre: branco, com sobreposição na cor `ink` (`bg-ink/45` a `bg-ink/55`) para garantir no mínimo 4,5:1 em qualquer foto.
+Texto claro no rodapé: token `line` (`#E7E5E4`) sobre `#111111` (≈ 15:1), sem cores fora da paleta.
+
+**Texto sobre fotos** (Hero, Sobre, cards de categoria): o pior caso é uma área branca da foto sob a sobreposição. Contraste do texto branco nesse caso:
+
+| Sobreposição `ink` | Fundo resultante (pior caso) | Branco | Decisão |
+|---|---|---|---|
+| `bg-ink/45` | ≈ `#949494` | 3,0:1 ✗ | Proibido |
+| `bg-ink/55` | ≈ `#7C7C7C` | 4,2:1 ✗ | Proibido |
+| `bg-ink/60` | ≈ `#707070` | 4,9:1 ✓ | **Mínimo obrigatório** |
+
+- Hero e Sobre usam `bg-ink/60`. Cards de categoria usam degradê `from-ink/70`, com o texto posicionado na faixa mais escura.
+- Sobre fotos, **todo texto é branco**. Vermelho sobre foto fica proibido, porque `#EF4444` cai para 1,1 a 2,6:1 sobre tons médios. O destaque vermelho do rótulo vira um traço decorativo (`h-0.5 w-10 bg-brand`), não texto.
+- O selo da Hero usa `bg-ink/60` (não `bg-white/20`, que clarearia o fundo do próprio texto).
 
 ### Rationale
 Todos os pares atendem WCAG AA (SC-008) e contribuem para Acessibilidade ≥ 90 no Lighthouse (SC-007).
@@ -83,9 +95,10 @@ Todos os pares atendem WCAG AA (SC-008) e contribuem para Acessibilidade ≥ 90 
 ## 4. Hero e LCP
 
 ### Decisão
-- A foto da Hero é um `<img>` real (não `background-image`), com `object-cover` em contêiner `h-[85vh] min-h-[520px]`, `fetchpriority="high"`, sem `loading="lazy"`, e `srcset` em 3 larguras: `hero-768.webp`, `hero-1280.webp` e `hero-1920.webp`.
+- A foto da Hero é um `<img>` real (não `background-image`), com `object-cover`, `fetchpriority="high"`, sem `loading="lazy"`, e `srcset` em 3 larguras: `hero-768.webp`, `hero-1280.webp` e `hero-1920.webp`.
+- O contêiner usa **altura mínima, não fixa**: `min-h-[85svh] py-16`. Em 320×568, o conteúdo (selo, h1 em 4 linhas, cerca de 11 linhas de texto e o botão) mede cerca de 600px; com altura fixa e `overflow-hidden`, o botão principal seria cortado. A unidade `svh` evita saltos quando a barra do navegador móvel aparece ou some.
 - `<link rel="preload" as="image" imagesrcset="…" imagesizes="100vw">` no `<head>`.
-- Sobreposição `bg-ink/45` ou maior para legibilidade do texto branco.
+- Sobreposição `bg-ink/60` (mínimo calculado em §2).
 - Em telas ultra-wide (> 1920px), `object-cover` com `object-position` centralizado; a imagem de 1920px é suficiente visualmente.
 - O logotipo fica **somente no cabeçalho** (Clarifications); a Hero não usa filtro `invert`.
 
@@ -141,7 +154,7 @@ O Font Awesome por CDN custa cerca de 100 KB de CSS e fontes para cerca de 12 í
   - `todos` → todos os produtos;
   - `masculino` / `feminino` / `acessorios` → `product.category`;
   - `lancamentos` → `product.isNew === true` (Clarifications).
-- Botões de filtro com `aria-pressed`; os cards de categoria têm `href="#colecoes"` e `data-filter-target="{categoria}"`, então funcionam como âncora mesmo sem JS.
+- Botões de filtro com `aria-pressed`; uma linha de status `#products-status` com `aria-live="polite"` anuncia o resultado ("Mostrando 4 peças · Feminino"), em vez de colocar `aria-live` na grade inteira, o que faria o leitor de tela ler todos os cards; os cards de categoria têm `href="#colecoes"` e `data-filter-target="{categoria}"`, então funcionam como âncora mesmo sem JS.
 - Card de produto: imagem `aspect-[3/4]` com `group-hover:scale-105`; o botão "Garantir no WhatsApp" fica abaixo das informações no mobile e, em dispositivos com hover, desliza sobre a imagem (`translate-y-full` → `group-hover:translate-y-0 group-focus-within:translate-y-0`).
 - Imagens dos cards com `loading="lazy"`, `width` e `height` explícitos (CLS = 0).
 
@@ -176,7 +189,8 @@ Separar dados (`config.js`) de comportamento (`main.js`) facilita a manutenção
 ### Decisão
 - `<html lang="pt-BR">`, `<title>`, `<meta name="description">`, `<link rel="canonical">`, `og:title`, `og:description`, `og:image`, `og:url`, `og:type=website`, `og:locale=pt_BR`, `twitter:card=summary_large_image`.
 - Dados estruturados `ClothingStore` (JSON-LD) com nome, URL, telefone e Instagram.
-- URL canônica provisória: `https://pedrooliv12.github.io/fashion-landing-page/` (GitHub Pages do repositório atual), a ser trocada se a loja tiver domínio próprio.
+- URL canônica provisória: `https://pedrooliv12.github.io/fashion-landing-page/`, marcada com `<!-- EXEMPLO: confirmar URL -->`.
+- **A publicação (deploy) está fora do escopo desta feature**: será feita pelo responsável do projeto depois da implementação. Ao publicar, ajustar `canonical`, `og:url`, `og:image` e o `url` do JSON-LD para o endereço final.
 
 ---
 

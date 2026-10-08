@@ -55,7 +55,7 @@ Acesse `http://localhost:3000`. **Não abra o `index.html` direto pelo arquivo**
 
 ### V4. Navegação (SC-005, FR-004)
 1. Clique em cada link do cabeçalho. **Esperado**: o título da seção aparece inteiro, abaixo do cabeçalho fixo.
-2. Em 375px, abra o menu, clique em um link. **Esperado**: o menu fecha e a página rola. A tecla `Esc` também fecha o menu.
+2. Em 375px e em 768px, abra o menu e clique em um link. **Esperado**: o menu fecha e a página rola. A tecla `Esc` também fecha o menu.
 
 ### V5. Botão flutuante e rodapé (US4)
 1. Role até o rodapé. **Esperado**: o botão flutuante não cobre nenhum link ou texto do rodapé.
@@ -73,12 +73,13 @@ Acesse `http://localhost:3000`. **Não abra o `index.html` direto pelo arquivo**
 
 ### V8. Contraste (SC-008)
 1. Lighthouse → Accessibility: sem o alerta "Background and foreground colors do not have a sufficient contrast ratio".
+2. O Lighthouse não mede texto sobre fotos. Confira no código que Hero e Sobre usam `bg-ink/60` e que nenhum texto vermelho fica sobre foto (research.md §2).
 2. Confira com o seletor de cor do DevTools o texto do botão verde (`#111111` sobre `#25D366`, cerca de 9,5:1).
 
 ### V9. Assets, fontes e prévia social
 1. DevTools → Network → filtro *Img*: todas as imagens exibidas são `.webp` (ou `.svg` no logo) e carregaram (status 200).
 2. Filtro *Font*: apenas `montserrat-latin-variable.woff2`, servida de `assets/fonts/`; nenhuma requisição para domínios externos.
-3. Após publicar, cole a URL em `https://www.opengraph.xyz/` ou envie para si no WhatsApp. **Esperado**: título, descrição e `og-image.jpg` aparecem.
+3. **Somente após a publicação (fora do escopo desta feature)**: cole a URL em `https://www.opengraph.xyz/` ou envie para si no WhatsApp. **Esperado**: título, descrição e `og-image.jpg` aparecem.
 
 ### V10. Checagem antes de publicar
 1. Procure por `EXEMPLO` no projeto: `git grep -n "EXEMPLO" site/`.

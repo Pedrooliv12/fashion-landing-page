@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 32" width="242" height="32" role="img" aria-label="Scorpion gytano">
+  <!-- EXEMPLO: substituir pela versão clara do logotipo oficial da Scorpion gytano -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="2" fill="#FFFFFF">
+    <text x="0" y="23" font-weight="700">SCORPION</text>
+    <text x="134" y="23" font-weight="400">GYTANO</text>
+  </g>
+  <rect x="234" y="18" width="6" height="6" fill="#EF4444"/>
+</svg>

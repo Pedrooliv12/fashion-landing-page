@@ -58,15 +58,16 @@ A landing page DEVE ser otimizada para carregamento quase instantâneo, mesmo em
 
 **Rationale**: Páginas lentas apresentam taxas de rejeição elevadas em campanhas de moda; a velocidade de renderização assegura a retenção de tráfego móvel.
 
-### V. Arquitetura Leve e Semântica (HTML5 + Tailwind CSS + Vanilla JS)
+### V. Arquitetura Estática Pura (HTML5 + CSS + Vanilla JS, sem build)
 
-A solução técnica DEVE adotar uma arquitetura de página única (Landing Page) pura, enxuta e manutenível, sem dependência de frameworks JavaScript pesados ou complexidade desnecessária.
+A solução técnica DEVE adotar uma arquitetura de página única (Landing Page) 100% estática, enxuta e manutenível: o repositório contém apenas código-fonte que o navegador executa diretamente.
 
 - O documento DEVE ser estruturado em HTML5 estritamente semântico (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`).
-- A estilização DEVE ser realizada com Tailwind CSS para consistência utilitária e desenvolvimento ágil, complementada por CSS personalizado quando necessário.
-- A interatividade (menu mobile responsivo, filtros de coleções/categorias e geração de links de WhatsApp) DEVE ser construída em Vanilla JavaScript puro, sem dependências volumosas de terceiros.
+- A estilização DEVE ficar em CSS estático (`site/assets/css/styles.css`), organizado em classes utilitárias no padrão do Tailwind (o arquivo foi gerado uma vez com Tailwind CSS 3.4 e é mantido à mão). Classes novas DEVEM ser escritas diretamente nesse arquivo.
+- A interatividade (menu mobile responsivo, filtros de coleções/categorias e geração de links de WhatsApp) DEVE ser construída em Vanilla JavaScript puro.
+- O projeto NÃO DEVE depender de Node.js, gerenciadores de pacotes (npm, yarn), frameworks ou etapas de build. Nenhum `package.json`, `node_modules` ou arquivo de configuração de ferramenta de build DEVE existir no repositório.
 
-**Rationale**: Manter a pilha técnica pura em HTML5, Tailwind CSS e Vanilla JS garante confiabilidade, manutenibilidade facilitada, custo zero de hidratação de scripts e performance máxima.
+**Rationale**: Um site sem build pode ser editado, testado e publicado em qualquer hospedagem estática sem instalar nada, o que simplifica a manutenção pela equipe e elimina dependências de terceiros e suas vulnerabilidades.
 
 ### VI. Localização pt-BR e Excelência em SEO/Open Graph
 
@@ -86,7 +87,7 @@ O projeto DEVE respeitar rigorosamente a seguinte organização de arquivos:
 site/
 ├── index.html                  # Landing page única e ponto de entrada da aplicação
 └── assets/
-    ├── css/                    # Estilos personalizados e/ou compilação de Tailwind CSS
+    ├── css/                    # styles.css estático (classes utilitárias, mantido à mão)
     ├── js/                     # Scripts Vanilla JS (menu mobile, filtros, links WhatsApp)
     ├── fonts/                  # Fontes self-hosted em formato .woff2
     └── img/                    # Imagens de coleções, produtos (WebP), logo e banners
@@ -94,13 +95,14 @@ site/
 
 - Nomes de arquivos DEVEM utilizar convenção `kebab-case` minúscula e sem caracteres especiais ou acentuação (ex: `hero-banner.webp`, `menu-mobile.js`).
 - Não DEVEM ser criados arquivos fora dessa estrutura para o entregável do site estático.
-- Arquivos de build do Tailwind CSS (`package.json`, `tailwind.config.js`, `src/input.css`) DEVEM ficar na raiz do repositório, fora de `site/`. Apenas o CSS compilado e minificado é publicado em `site/assets/css/`.
+- Fora de `site/`, o repositório contém apenas documentação (`README.md`, `specs/`, `.specify/`) e configuração do editor/agente (`.claude/`). Não há arquivos de build.
+- Imagens novas DEVEM ser convertidas para WebP antes de entrar em `site/assets/img/` (com qualquer ferramenta externa, como o Squoosh no navegador), sem adicionar ferramentas ao repositório.
 
 ## Referência Visual
 
 O layout DEVE seguir como referência visual o template aprovado pelo cliente: [nodeckagency/clothing-store-landing-page](https://github.com/nodeckagency/clothing-store-landing-page) (estilo editorial claro, cantos retos, títulos em caixa alta com espaçamento entre letras, faixa de benefícios com ícones, cards de categoria com imagem alta, rodapé escuro em colunas).
 
-- O template é referência visual, não fonte de código: o repositório não possui LICENSE, portanto o código DEVE ser reescrito em Tailwind CSS e Vanilla JS, sem cópia literal.
+- O template é referência visual, não fonte de código: o repositório não possui LICENSE, portanto o código DEVE ser reescrito (HTML, CSS próprio e Vanilla JS), sem cópia literal.
 - Os elementos de e-commerce do template (carrinho, contador de itens, busca, favoritos) e a newsletter NÃO DEVEM ser incluídos, pois a conversão ocorre exclusivamente via WhatsApp (Princípio III).
 - Dependências externas do template (Font Awesome via CDN, Google Fonts via CDN, imagens do Unsplash) DEVEM ser substituídas por ícones SVG inline, fontes self-hosted e imagens próprias da marca (Princípio IV).
 
@@ -132,5 +134,6 @@ Toda entrega ou alteração no projeto DEVE satisfazer os seguintes critérios d
 | 1.0.0 | 2026-10-06 | Ratificação inicial |
 | 1.1.0 | 2026-10-08 | Princípio II: tema claro editorial, tokens de cor, exceção do verde WhatsApp e contraste WCAG AA. Estrutura: `site/assets/fonts/` e arquivos de build do Tailwind na raiz. Nova seção "Referência Visual" (template aprovado pelo cliente). |
 | 1.2.0 | 2026-10-08 | Princípio II: exceção do verde WhatsApp ampliada para todos os botões que abrem o WhatsApp (inclusive os cards de produto e o rodapé), a pedido do responsável do projeto: o verde identifica o canal de compra. |
+| 2.0.0 | 2026-10-09 | **MAJOR**: Princípio V redefinido de "HTML5 + Tailwind CSS + Vanilla JS" para arquitetura estática pura, sem Node.js, npm, frameworks ou build. O CSS gerado pelo Tailwind passa a ser mantido à mão em `styles.css`. Removida a regra de arquivos de build na raiz. Pedido do responsável do projeto. |
 
-**Version**: 1.2.0 | **Ratified**: 2026-10-06 | **Last Amended**: 2026-10-08
+**Version**: 2.0.0 | **Ratified**: 2026-10-06 | **Last Amended**: 2026-10-09

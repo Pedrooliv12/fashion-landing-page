@@ -34,7 +34,7 @@
   /* ---------- Redes sociais e dados da loja ---------- */
 
   function hydrateStoreInfo(root) {
-    const socialUrls = { instagram: config.instagramUrl, tiktok: config.tiktokUrl };
+    const socialUrls = { instagram: config.instagramUrl };
     root.querySelectorAll("[data-social]").forEach((anchor) => {
       const url = socialUrls[anchor.dataset.social];
       if (url) setExternalLink(anchor, url);

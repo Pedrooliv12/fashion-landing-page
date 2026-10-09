@@ -76,6 +76,8 @@ Todos os pares atendem WCAG AA (SC-008) e contribuem para Acessibilidade ≥ 90 
 
 ## 3. Tailwind CSS: Versão e Build
 
+> **Atualização 2026-10-09 (Constituição v2.0.0)**: a etapa de build foi removida a pedido do responsável do projeto. O CSS gerado pelo Tailwind foi congelado em `site/assets/css/styles.css`, em versão legível (não minificada), e passa a ser mantido à mão. `package.json`, `tailwind.config.js`, `src/input.css` e `node_modules` foram apagados do repositório. A decisão abaixo descreve como o arquivo foi gerado originalmente.
+
 ### Decisão
 - **Tailwind CSS v3.4** (`tailwindcss@3.4.17`, versão exata em `devDependencies`), com `tailwind.config.js` na raiz, conforme a Constituição v1.1.0.
 - `content: ["./site/**/*.{html,js}"]`, para que as classes usadas pelos cards gerados em `config.js`/`main.js` não sejam descartadas.
@@ -124,7 +126,7 @@ Um único arquivo variável substitui vários pesos estáticos, com menos requis
 ### Decisão
 SVG inline, sem Font Awesome:
 - Ícones de interface (menu, fechar, caminhão, cartão, escudo, estrela, seta): **Lucide** (licença ISC).
-- Marcas (WhatsApp, Instagram, TikTok): **Simple Icons** (CC0).
+- Marcas (WhatsApp, Instagram): **Simple Icons** (CC0).
 - Ícones decorativos com `aria-hidden="true"`; botões só com ícone recebem `aria-label`.
 
 ### Rationale
@@ -177,7 +179,7 @@ Separar dados (`config.js`) de comportamento (`main.js`) facilita a manutenção
 ## 10. Imagens e Conteúdo de Exemplo
 
 ### Decisão
-- Formato **WebP** para tudo o que é exibido. Conversão com `sharp-cli` (`devDependency`) a partir de originais guardados fora de `site/` (em `src/img-originais/`, ignorado pelo Git).
+- Formato **WebP** para tudo o que é exibido. As imagens de exemplo foram convertidas com `sharp-cli`; desde a Constituição v2.0.0 (sem Node), imagens novas são convertidas fora do repositório, por exemplo com o Squoosh no navegador.
 - **Logo**: `logo.svg` se a loja tiver o vetor; caso contrário, `logo.webp` com transparência.
 - **Imagem de Open Graph**: `og-image.jpg` 1200×630. É exceção ao WebP porque não é exibida na página (o critério 4 da Constituição trata de "imagens exibidas") e o JPG tem o suporte mais amplo em prévias de links.
 - **Conteúdo de exemplo**: até a loja enviar o material real, usar fotos livres do Unsplash (licença Unsplash) convertidas para WebP, número `5511999999999` e depoimentos de exemplo. Todos ficam marcados com o comentário `// EXEMPLO: substituir` em `config.js` ou `<!-- EXEMPLO -->` no HTML, e há uma tarefa de checagem antes da publicação.

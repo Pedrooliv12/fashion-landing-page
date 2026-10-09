@@ -21,6 +21,8 @@
 - Q: Tema claro ou escuro? → A: Claro e editorial, como o template. A paleta oficial está na Constituição v1.1.0, Princípio II (fundo `#FFFFFF`, superfície `#F5F5F4`, tinta `#111111`, vermelho `#DC2626`).
 - Q: Qual cor os botões de WhatsApp devem usar? → A: Verde oficial `#25D366` no botão flutuante e no botão do cabeçalho, com texto `#111111` e ícone branco. Os demais CTAs de WhatsApp (Hero, cards, rodapé) usam o vermelho da marca. *(Revisado no ajuste abaixo: os cards passaram a usar verde.)*
 - Q (ajuste pós-implementação): Os botões de WhatsApp dos cards e do rodapé devem ser vermelhos? → A: Não. Todo botão que abre o WhatsApp usa o verde oficial `#25D366` com texto `#111111` (nos cards, nas duas versões, mouse e toque), porque o verde identifica o WhatsApp de imediato. O vermelho fica para as ações que não abrem o WhatsApp, como o CTA da Hero. Constituição atualizada para v1.2.0.
+- Q (ajuste pós-implementação): O projeto pode depender de Node.js ou frameworks? → A: Não. O repositório deve conter só o código-fonte estático. Build, `package.json` e `node_modules` foram removidos e o CSS gerado pelo Tailwind passou a ser mantido à mão (Constituição v2.0.0).
+- Q (ajuste pós-implementação): A loja tem TikTok? → A: Não, só Instagram. O link do TikTok foi removido do rodapé e da configuração.
 - Q (ajuste pós-implementação): A loja faz entregas? → A: Não. Removidos o diferencial "Envio Rápido e Seguro", o depoimento sobre entrega e a pergunta sobre "opções de entrega" na mensagem do WhatsApp dos cards. Os Diferenciais passam a ter 3 itens.
 - Q (ajuste pós-implementação): A seção Comunidade deve ter o mosaico de fotos do Instagram? → A: Não. O mosaico foi removido; a seção mantém o título "Siga @scorpion.gytano", o convite e o botão "Seguir no Instagram".
 - Q: Qual a ordem das seções? → A: A do template: Faixa superior → Cabeçalho → Hero → Diferenciais → Categorias → Coleções → Sobre a Marca → Depoimentos & Instagram → Rodapé.
@@ -129,7 +131,7 @@ Como um usuário navegando em qualquer ponto da página, quero ver avaliações 
   2. Pagamento Facilitado — Pix e Cartão de Crédito;
   3. Peças Exclusivas & Qualidade Premium — curadoria rigorosa de tecidos e acabamento.
 - **FR-014**: A seção de Prova Social & Comunidade DEVE conter de 3 a 4 depoimentos de clientes (nome, nota e relato sobre qualidade, caimento e atendimento) e uma chamada de comunidade (título, convite para seguir e marcar o perfil `@scorpion.gytano` e botão "Seguir no Instagram"), sem mosaico de fotos.
-- **FR-015**: O rodapé DEVE ter fundo `#111111`, organizado em colunas: marca e redes sociais (Instagram e TikTok); atalhos de navegação para todas as seções; atendimento, com horário de funcionamento e botão "Falar no WhatsApp" em verde oficial `#25D366` com texto `#111111`; e copyright.
+- **FR-015**: O rodapé DEVE ter fundo `#111111`, organizado em colunas: marca e rede social (somente Instagram; a loja não tem outros perfis); atalhos de navegação para todas as seções; atendimento, com horário de funcionamento e botão "Falar no WhatsApp" em verde oficial `#25D366` com texto `#111111`; e copyright.
 - **FR-016**: O sistema DEVE manter um botão flutuante do WhatsApp no canto inferior direito, em verde `#25D366` com ícone branco e animação pulsante suave, com link direto para o atendimento. O botão não pode cobrir conteúdo, incluindo o rodapé.
 - **FR-017**: Uma faixa superior fina (fundo `#111111`, texto branco) DEVE ficar acima do cabeçalho com uma mensagem curta de benefício (ex: "Atendimento VIP pelo WhatsApp · Pix e Cartão de Crédito").
 - **FR-018**: A interface DEVE usar exclusivamente a paleta da Constituição v1.2.0 (Princípio II) e a tipografia Montserrat self-hosted. O vermelho fica restrito a ações e destaques, e o verde aos botões que abrem o WhatsApp (FR-003, FR-010, FR-015 e FR-016).
@@ -146,7 +148,7 @@ Como um usuário navegando em qualquer ponto da página, quero ver avaliações 
 - **Depoimento de Cliente**: Representa o relato de satisfação de um comprador.
   - *Atributos*: Nome do cliente, localidade (opcional), nota de 1 a 5, texto do relato e foto/avatar (opcional).
 - **Parâmetros de Contato & Redes**: Configurações institucionais de atendimento, centralizadas em um único local.
-  - *Atributos*: Número internacional de WhatsApp, mensagens padrão por origem de clique, perfil do Instagram (`@scorpion.gytano`), perfil do TikTok e horários de atendimento.
+  - *Atributos*: Número internacional de WhatsApp, mensagens padrão por origem de clique, perfil do Instagram (`@scorpion.gytano`) e horários de atendimento.
 
 ## Success Criteria *(mandatory)*
 

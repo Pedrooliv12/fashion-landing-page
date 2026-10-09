@@ -1,16 +1,6 @@
 # Claude Code: configurações locais da máquina (permissões, preferências)
 .claude/settings.local.json
 
-# Dependências de build (Tailwind CLI, sharp-cli, fontes)
-node_modules/
-
-# Originais em alta resolução, antes da conversão para WebP
-src/img-originais/
-
-# Logs e variáveis de ambiente
-*.log
-.env*
-
 # Arquivos de sistema e editores
 .DS_Store
 Thumbs.db

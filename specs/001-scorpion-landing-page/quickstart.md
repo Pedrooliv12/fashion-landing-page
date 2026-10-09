@@ -1,7 +1,7 @@
 # Quickstart & Validation Guide: Landing Page Scorpion gytano
 
 **Feature**: `001-scorpion-landing-page`
-**Date**: 2026-10-08 (revisão: tema claro, build do Tailwind, validações de qualidade)
+**Date**: 2026-10-09 (revisão: site estático sem Node.js nem build, Constituição v2.0.0)
 **Status**: Ready
 
 Como rodar a página localmente e o roteiro de validação ponta a ponta. Os detalhes dos componentes estão em [contracts/ui-contracts.md](contracts/ui-contracts.md).
@@ -10,27 +10,20 @@ Como rodar a página localmente e o roteiro de validação ponta a ponta. Os det
 
 ## 1. Pré-Requisitos
 
-- Node.js 18+ (usado só para compilar o Tailwind e converter imagens).
+- Um servidor estático qualquer: extensão **Live Server** do VS Code ou Python.
 - Google Chrome (DevTools e Lighthouse).
 
-## 2. Instalação e Build
+Não há instalação nem build: o site é só HTML, CSS e JS.
 
-Na raiz do repositório:
-
-```powershell
-npm install          # instala tailwindcss@3.4.17 e sharp-cli
-npm run build        # gera site/assets/css/styles.css minificado
-```
-
-Durante o desenvolvimento, `npm run dev` recompila o CSS a cada alteração.
-
-## 3. Servir Localmente
+## 2. Servir Localmente
 
 ```powershell
-npx serve site -p 3000
+python -m http.server 3000 --directory site
 ```
 
-Acesse `http://localhost:3000`. **Não abra o `index.html` direto pelo arquivo** (`file://`): o preload de fontes e alguns recursos não funcionam nesse modo.
+Ou, no VS Code, abra `site/index.html` e clique em **Go Live** (Live Server).
+
+Acesse `http://localhost:3000`. **Não abra o `index.html` direto pelo arquivo** (`file://`): no Chrome a fonte não carrega nesse modo.
 
 ---
 
@@ -102,9 +95,9 @@ Feita localmente (`npx serve site`) com Chrome headless (screenshots em iframes 
 | V7 Lighthouse | ✅ / ⚠️ | Mobile: 100 / 100 / 100 / 100, CLS 0, FCP 0,8s, **LCP 1,7s** (meta do plano: 1,5s; ainda "bom" pelo Core Web Vitals, até 2,5s). Desktop: 100 / 100 / 100 / 100, LCP 0,5s |
 | V8 Contraste | ✅ | Acessibilidade 100; Hero e Sobre com `bg-ink/60`; nenhum texto vermelho sobre foto |
 | V9 Assets e fontes | ✅ / ⏳ | Imagens WebP (logo e favicon em SVG), fonte local, nenhuma requisição externa. Prévia social pendente até a publicação |
-| V10 Checagem antes de publicar | ❌ esperado | Conteúdo `EXEMPLO` ainda presente: número, logo, fotos, depoimentos, texto do Sobre, TikTok, horário e URL. Pendência da loja (ver README) |
+| V10 Checagem antes de publicar | ❌ esperado | Conteúdo `EXEMPLO` ainda presente: número, logo, fotos, depoimentos, texto do Sobre, horário e URL. Pendência da loja (ver README) |
 
 **Melhorias opcionais identificadas pelo Lighthouse** (não afetam a nota):
 - Imagens de produtos e do Instagram são servidas em 600px mesmo quando exibidas menores no desktop (cerca de 500 KB evitáveis). Vale gerar versões de 300px com `srcset` ao trocar pelas fotos reais.
 - Cache dos arquivos estáticos: é configuração da hospedagem, a definir na publicação.
-- LCP no mobile: o CSS (13 KB) bloqueia a renderização por cerca de 110ms. Inserir o CSS crítico no `<head>` traria o LCP para perto de 1,5s, ao custo de uma etapa extra no build.
+- LCP no mobile: o CSS bloqueia a renderização por cerca de 110ms. Inserir o CSS crítico no `<head>` traria o LCP para perto de 1,5s. Desde a Constituição v2.0.0 o CSS não é minificado (≈ 27 KB em vez de 13 KB), o que pode afetar levemente esse número; vale repetir o Lighthouse antes de publicar.

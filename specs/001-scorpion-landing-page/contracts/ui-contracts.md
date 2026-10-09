@@ -104,7 +104,7 @@ article.group (bg-white)
                            pointer-fine:hidden, largura total, mínimo 44px de altura,
                            px-3 text-xs leading-tight text-center (quebra em 2 linhas se preciso)
 ```
-Ambos os botões: `bg-whatsapp hover:opacity-90 text-ink uppercase` (verde oficial, Constituição v1.2.0), texto "Garantir no WhatsApp" + ícone. A variante `pointer-fine` é `@media (hover: hover) and (pointer: fine)`, registrada como variante no `tailwind.config.js`.
+Ambos os botões: `bg-whatsapp hover:opacity-90 text-ink uppercase` (verde oficial, Constituição v1.2.0), texto "Garantir no WhatsApp" + ícone. A variante `pointer-fine` é `@media (hover: hover) and (pointer: fine)`, definida em `styles.css`.
 
 ---
 
@@ -139,7 +139,7 @@ Banner de largura total no padrão `.banner-promo` do template: imagem `sobre.we
 ## 10. Rodapé (`#rodape`)
 
 `bg-ink`, texto `text-line` (`#E7E5E4`), títulos brancos, grade `sm:grid-cols-2 lg:grid-cols-4`:
-1. Logo (versão clara) + frase da marca + ícones Instagram/TikTok (`aria-label`, 44×44px).
+1. Logo (versão clara) + frase da marca + ícone do Instagram (`aria-label`, 44×44px). A loja só tem Instagram.
 2. "Navegação": links para todas as seções.
 3. "Atendimento": `openingHours` + `a[data-whatsapp="footer"]` com `.btn-whatsapp` (`bg-whatsapp text-ink`, Constituição v1.2.0).
 4. "Pagamento": "Pix e Cartão de Crédito".

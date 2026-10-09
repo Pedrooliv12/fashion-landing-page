@@ -22,7 +22,6 @@ window.StoreConfig = {
 
   instagramHandle: "@scorpion.gytano",
   instagramUrl: "https://www.instagram.com/scorpion.gytano/",
-  tiktokUrl: "https://www.tiktok.com/@scorpion.gytano", // EXEMPLO: confirmar perfil
   openingHours: "Seg a Sáb, 9h às 20h", // EXEMPLO: confirmar horário
 };
 

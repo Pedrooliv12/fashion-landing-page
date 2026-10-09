@@ -28,7 +28,6 @@ Define as entidades de conteúdo da landing page. Os dados dinâmicos (configura
 | `messages.product` | `(name: string) => string` | ver contrato §7 | O retorno contém `name` |
 | `instagramHandle` | `string` | `"@scorpion.gytano"` | Começa com `@` |
 | `instagramUrl` | `string` | `"https://www.instagram.com/scorpion.gytano/"` | URL https |
-| `tiktokUrl` | `string` | `"https://www.tiktok.com/@scorpion.gytano"` *(EXEMPLO)* | URL https |
 | `openingHours` | `string` | `"Seg a Sáb, 9h às 20h"` *(EXEMPLO)* | Exibido no rodapé |
 
 ---

@@ -52,7 +52,7 @@ Todas as `<section>` com `scroll-mt-24`. Elementos `<main>` envolvem as seções
 
 Ordem visual (o logo do cabeçalho fica imediatamente acima):
 1. `#hero-badge`: "Nova Coleção", com `bg-ink/60` e caixa alta.
-2. `<h1 id="hero-headline">`: "Estilo, Atitude e Exclusividade em Cada Peça".
+2. `<h1 id="hero-headline">`: "A moda que veste com magia" (slogan da loja).
 3. `#hero-description`: texto corrido do FR-006.
 4. `a#hero-cta[href="#colecoes"]`: `bg-brand hover:bg-brand-dark text-white`, caixa alta, mínimo 44px de altura, texto "Ver Coleção & Falar com Vendedor".
 

@@ -1,89 +1,77 @@
-# Scorpion gytano — Landing Page
+<div align="center">
 
-Landing page de página única da loja **Scorpion gytano**, com vendas pelo WhatsApp. É um site **100% estático**: HTML5, CSS e JavaScript puro, sem Node.js, npm, frameworks ou etapa de build. O site publicado é a pasta `site/`.
+# Scorpion gytano · Landing Page
 
-A especificação completa está em [`specs/001-scorpion-landing-page/`](specs/001-scorpion-landing-page/), e as regras do projeto na [constituição](.specify/memory/constitution.md).
+Landing page estática e mobile-first para uma loja de moda, com vendas pelo WhatsApp.
 
-## Como rodar
+**Português** · [English](README.en.md)
 
-Não precisa instalar nada. Sirva a pasta `site/` com qualquer servidor estático. Duas opções:
+</div>
 
-- **VS Code:** instale a extensão *Live Server*, abra `site/index.html` e clique em **Go Live**.
-- **Python** (já vem no Windows com o Python instalado):
+---
 
-  ```bash
-  python -m http.server 3000 --directory site
-  ```
+## Sobre
 
-  e acesse `http://localhost:3000`.
+Projeto acadêmico de desenvolvimento de uma landing page para a **Scorpion gytano**, empresa de moda urbana. A página apresenta as coleções da loja e leva o visitante a fechar a compra numa conversa direta pelo WhatsApp.
 
-> Evite abrir o `index.html` direto pelo arquivo (`file://`): no Chrome a fonte Montserrat não carrega nesse modo. Use um dos servidores acima.
+O projeto segue Spec-Driven Development com o [GitHub Spec Kit](https://github.com/github/spec-kit). A especificação, o plano e as tarefas estão em [`specs/`](specs/001-scorpion-landing-page/).
 
-## Como editar o conteúdo da loja
+## Funcionalidades
 
-Quase tudo que muda com frequência está em **um único arquivo**: [`site/assets/js/config.js`](site/assets/js/config.js).
+- **Vitrine de produtos** com filtros por categoria e lançamentos
+- **Compra pelo WhatsApp**: cada produto abre uma conversa com mensagem pronta citando a peça
+- **Mobile-first**, testado de 320 px a 2560 px
+- **Acessível**: contraste WCAG AA, navegação por teclado e suporte a movimento reduzido
+- **Rápido**: nota 100 no Lighthouse em Performance, Acessibilidade, Boas Práticas e SEO na validação do projeto
+- **Zero dependências**: sem frameworks, sem gerenciador de pacotes e sem build
 
-| O que mudar | Onde |
-|---|---|
-| Número do WhatsApp | `whatsappPhone`: só dígitos, com 55 + DDD + número (ex: `5511912345678`) |
-| Mensagens que chegam no WhatsApp | `messages` (uma por botão: cabeçalho, rodapé, botão flutuante e produto) |
-| Instagram e horário | `instagramUrl`, `openingHours` |
-| Produtos | lista `window.PRODUCTS` |
+## Tecnologias
 
-### Adicionar um produto
+HTML5 · CSS3 · JavaScript puro
 
-1. Prepare a foto em **WebP, 600×800 px** (proporção 3:4) e salve em `site/assets/img/produtos/{id}.webp`. Para converter uma foto JPG ou PNG sem instalar nada, use o [Squoosh](https://squoosh.app) no navegador: redimensione para 600×800, escolha o formato **WebP** com qualidade em torno de 78 e baixe o arquivo.
+## Como executar
 
-2. Adicione um item em `window.PRODUCTS` no `config.js`:
+### Pré-requisitos
 
-   ```js
-   {
-     id: "minha-peca",                  // igual ao nome do arquivo da foto
-     name: "Nome da Peça",              // entre 3 e 80 caracteres
-     category: "feminino",              // "masculino", "feminino" ou "acessorios"
-     isNew: true,                       // opcional: aparece em "Lançamentos"
-     material: "Tecido e acabamento",
-     badge: "Lançamento",               // opcional: "Mais Vendido", "Lançamento" ou "Edição Limitada"
-     price: "R$ 199,90",                // opcional
-     image: "assets/img/produtos/minha-peca.webp",
-     alt: "Descrição da foto para leitores de tela",
-   },
-   ```
+Qualquer servidor de arquivos estáticos, como Python ou a extensão **Live Server** do VS Code.
 
-Os textos fixos (Hero, Diferenciais, Sobre a Marca, Depoimentos e rodapé) ficam em [`site/index.html`](site/index.html).
-
-### Sobre o CSS
-
-O [`styles.css`](site/assets/css/styles.css) foi gerado uma vez com Tailwind CSS e agora é **mantido à mão**. Ele contém só as classes usadas no `index.html` e no `main.js` (ex: `bg-brand`, `text-muted`, `min-h-11`). Se você usar no HTML uma classe que ainda não existe no arquivo, ela não terá efeito: escreva a regra dela no `styles.css`. As cores da marca estão listadas no comentário do topo do arquivo.
-
-## Conteúdo de exemplo a substituir antes de publicar
-
-O site está com conteúdo provisório, marcado com `EXEMPLO` no código. Para listar tudo que falta trocar:
+### Rodando localmente
 
 ```bash
-git grep -n "EXEMPLO" site/
+git clone https://github.com/Pedrooliv12/fashion-landing-page.git
+cd fashion-landing-page
+python -m http.server 3000 --directory site
 ```
 
-- [ ] Número oficial do WhatsApp (`config.js`)
-- [ ] Horário de atendimento (`config.js`)
-- [ ] Catálogo real: produtos, preços e fotos (`config.js` e `site/assets/img/produtos/`)
-- [ ] Logotipo oficial (`site/assets/img/logo.svg`, `logo-light.svg`, `favicon.svg`)
-- [ ] Fotos da Hero, das categorias e do Sobre (hoje são fotos livres do Unsplash)
-- [ ] Depoimentos reais de clientes (`index.html`). **Não publique os depoimentos de exemplo.**
-- [ ] Texto institucional do "Sobre a Marca" revisado pela loja (`index.html`)
-- [ ] URL final do site no `canonical`, `og:url`, `og:image` e JSON-LD (`index.html`)
+Depois acesse `http://localhost:3000`.
+
+> Sirva os arquivos por HTTP em vez de abrir o `index.html` direto: os navegadores bloqueiam as fontes locais em endereços `file://`.
 
 ## Estrutura
 
 ```text
-site/                    # o que é publicado
-├── index.html
+site/
+├── index.html            # Marcação da página e textos fixos
 └── assets/
-    ├── css/styles.css   # estilos estáticos (mantidos à mão)
-    ├── js/config.js     # dados da loja (edite aqui)
-    ├── js/main.js       # comportamento: WhatsApp, menu, vitrine e filtros
-    ├── fonts/           # Montserrat (self-hosted)
-    └── img/             # imagens WebP, logo e favicon
-specs/                   # especificação, plano e tarefas (Spec Kit)
-.specify/                # constituição e templates do Spec Kit
+    ├── css/styles.css    # Estilos (paleta documentada no topo)
+    ├── js/config.js      # Dados da loja: WhatsApp, produtos, redes
+    ├── js/main.js        # Vitrine, filtros, menu e links do WhatsApp
+    ├── fonts/            # Montserrat (self-hosted)
+    └── img/              # Imagens em WebP e logotipo em SVG
+specs/                    # Especificação, plano e tarefas (Spec Kit)
 ```
+
+## Usando como template
+
+1. **Faça um fork ou clone** deste repositório.
+2. **Configure a loja** em `site/assets/js/config.js`: número do WhatsApp (só dígitos, com DDI e DDD), mensagens, Instagram, horário e a lista de produtos.
+3. **Troque as imagens** em `site/assets/img/` por arquivos WebP. As fotos de produto têm 600×800 px. O [Squoosh](https://squoosh.app) converte imagens direto no navegador.
+4. **Atualize a identidade**: os logotipos (`logo.svg`, `logo-light.svg`, `favicon.svg`) e os textos do `index.html`.
+5. **Ajuste as cores** no `styles.css`, usando a paleta listada no topo do arquivo.
+6. **Remova os placeholders** antes de publicar. Procure por `EXEMPLO` no código: esses trechos são conteúdo provisório e precisam ser trocados, inclusive os depoimentos, que são fictícios.
+
+## Créditos
+
+- Fotos de exemplo do [Unsplash](https://unsplash.com/license)
+- Referência visual: [nodeckagency/clothing-store-landing-page](https://github.com/nodeckagency/clothing-store-landing-page)
+- Fonte: [Montserrat](https://fonts.google.com/specimen/Montserrat) (SIL Open Font License)

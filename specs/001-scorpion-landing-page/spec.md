@@ -21,6 +21,7 @@
 - Q: Tema claro ou escuro? → A: Claro e editorial, como o template. A paleta oficial está na Constituição v1.1.0, Princípio II (fundo `#FFFFFF`, superfície `#F5F5F4`, tinta `#111111`, vermelho `#DC2626`).
 - Q: Qual cor os botões de WhatsApp devem usar? → A: Verde oficial `#25D366` no botão flutuante e no botão do cabeçalho, com texto `#111111` e ícone branco. Os demais CTAs de WhatsApp (Hero, cards, rodapé) usam o vermelho da marca. *(Revisado no ajuste abaixo: os cards passaram a usar verde.)*
 - Q (ajuste pós-implementação): Os botões de WhatsApp dos cards e do rodapé devem ser vermelhos? → A: Não. Todo botão que abre o WhatsApp usa o verde oficial `#25D366` com texto `#111111` (nos cards, nas duas versões, mouse e toque), porque o verde identifica o WhatsApp de imediato. O vermelho fica para as ações que não abrem o WhatsApp, como o CTA da Hero. Constituição atualizada para v1.2.0.
+- Q (ajuste pós-implementação): Qual é o slogan da loja e onde ele aparece? → A: "A moda que veste com magia", informado pelo cliente. Substitui a headline anterior ("Estilo, Atitude e Exclusividade em Cada Peça") como título da Hero e aparece também no rodapé, no `<title>`, no `og:title` e no JSON-LD.
 - Q (ajuste pós-implementação): O projeto pode depender de Node.js ou frameworks? → A: Não. O repositório deve conter só o código-fonte estático. Build, `package.json` e `node_modules` foram removidos e o CSS gerado pelo Tailwind passou a ser mantido à mão (Constituição v2.0.0).
 - Q (ajuste pós-implementação): A loja tem TikTok? → A: Não, só Instagram. O link do TikTok foi removido do rodapé e da configuração.
 - Q (ajuste pós-implementação): A loja faz entregas? → A: Não. Removidos o diferencial "Envio Rápido e Seguro", o depoimento sobre entrega e a pergunta sobre "opções de entrega" na mensagem do WhatsApp dos cards. Os Diferenciais passam a ter 3 itens.
@@ -61,7 +62,7 @@ Como um visitante recém-chegado à landing page, quero ser impactado por uma ap
 
 **Acceptance Scenarios**:
 
-1. **Given** que o visitante acessa a página, **When** a tela inicial é carregada, **Then** a faixa superior, o cabeçalho e o banner principal são apresentados com a headline "Estilo, Atitude e Exclusividade em Cada Peça" e o texto corrido oficial da marca sem quebras de tópicos.
+1. **Given** que o visitante acessa a página, **When** a tela inicial é carregada, **Then** a faixa superior, o cabeçalho e o banner principal são apresentados com a headline "A moda que veste com magia" (slogan da loja) e o texto corrido oficial da marca sem quebras de tópicos.
 2. **Given** que o visitante lê a apresentação na dobra principal, **When** clica no botão vermelho "Ver Coleção & Falar com Vendedor", **Then** a página rola suavemente até a vitrine de produtos (`#colecoes`).
 3. **Given** que o visitante quer atendimento imediato, **When** clica no botão verde "Atendimento no WhatsApp" do cabeçalho, **Then** o WhatsApp abre com a mensagem de atendimento geral.
 
@@ -118,7 +119,7 @@ Como um usuário navegando em qualquer ponto da página, quero ver avaliações 
 - **FR-002**: O cabeçalho DEVE conter links de navegação com rolagem suave para as seções, na ordem da página: "Início", "Diferenciais", "Coleções", "Sobre a Marca" e "Depoimentos".
 - **FR-003**: O cabeçalho DEVE incluir, no canto direito, o botão "Atendimento no WhatsApp" em verde oficial `#25D366` com texto `#111111` e o ícone oficial do aplicativo.
 - **FR-004**: Em telas menores que 1024px, o cabeçalho DEVE oferecer um menu responsivo (hambúrguer) com área de toque mínima de 44x44px, que fecha automaticamente ao clicar em um link.
-- **FR-005**: A Hero Section DEVE apresentar um banner de ponta a ponta com foto de modelos vestindo produtos da marca, sobreposição escura para legibilidade, conteúdo centralizado, um rótulo superior de destaque (ex: "Nova Coleção") e a headline "Estilo, Atitude e Exclusividade em Cada Peça".
+- **FR-005**: A Hero Section DEVE apresentar um banner de ponta a ponta com foto de modelos vestindo produtos da marca, sobreposição escura para legibilidade, conteúdo centralizado, um rótulo superior de destaque (ex: "Nova Coleção") e, como headline, o slogan da loja: "A moda que veste com magia". O slogan também aparece no rodapé, abaixo da logo, e no título da página.
 - **FR-006**: A Hero Section DEVE exibir o texto institucional corrido sem uso de tópicos ou listas: *"Na Scorpion gytano, traduzimos atitude e autenticidade em peças de vestuário e acessórios com acabamento premium. Nossa missão é oferecer coleções exclusivas que alinham conforto, caimento impecável e as principais tendências da moda urbana e sofisticada. Escolha seu look e fale diretamente com nossa equipe para garantir o seu."*
 - **FR-007**: A Hero Section DEVE conter um botão de CTA principal em vermelho `#DC2626` (hover `#B91C1C`) com o texto "Ver Coleção & Falar com Vendedor", que rola suavemente até `#colecoes`.
 - **FR-008**: A página DEVE exibir uma seção de Categorias com 3 cards de imagem alta (Masculino, Feminino, Acessórios). Clicar em um card rola até a vitrine e aplica o filtro correspondente.

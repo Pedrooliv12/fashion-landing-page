@@ -26,9 +26,11 @@
 - Q (ajuste pós-implementação): A loja tem TikTok? → A: Não, só Instagram. O link do TikTok foi removido do rodapé e da configuração.
 - Q (ajuste pós-implementação): A loja faz entregas? → A: Não. Removidos o diferencial "Envio Rápido e Seguro", o depoimento sobre entrega e a pergunta sobre "opções de entrega" na mensagem do WhatsApp dos cards. Os Diferenciais passam a ter 3 itens.
 - Q (ajuste pós-implementação): A seção Comunidade deve ter o mosaico de fotos do Instagram? → A: Não. O mosaico foi removido; a seção mantém o título "Siga @scorpion.gytano", o convite e o botão "Seguir no Instagram".
+- Q (ajuste pós-implementação): Quais categorias a loja tem? → A: Feminino, Infantil e Acessórios. As fotos enviadas pelo cliente são de moda feminina, infantil e bolsas, sem roupa masculina adulta, então "Masculino" deu lugar a "Infantil". As fotos de exemplo foram trocadas pelas da loja, evitando as que têm marca de terceiros, marca d'água, código "REF." na imagem ou print de tela.
+- Q (ajuste pós-implementação): Como a Hero fica no celular? → A: Com `<picture>`: telas em pé recebem uma foto vertical e telas deitadas, a horizontal, porque nenhuma foto horizontal do cliente tem resolução para ser cortada na vertical sem perder nitidez.
 - Q: Qual a ordem das seções? → A: A do template: Faixa superior → Cabeçalho → Hero → Diferenciais → Categorias → Coleções → Sobre a Marca → Depoimentos & Instagram → Rodapé.
 - Q: O que o botão principal da Hero faz? → A: Rola suavemente até a vitrine (`#colecoes`). O WhatsApp já está acessível pelo cabeçalho e pelo botão flutuante.
-- Q: "Lançamentos" é uma categoria? → A: Não. É um filtro que mostra os produtos marcados como novidade, de qualquer categoria. As categorias são Masculino, Feminino e Acessórios.
+- Q: "Lançamentos" é uma categoria? → A: Não. É um filtro que mostra os produtos marcados como novidade, de qualquer categoria. As categorias são Feminino, Infantil e Acessórios.
 - Q: Onde fica o logotipo no mobile? → A: Somente no cabeçalho fixo, logo acima da Hero. A Hero não repete o logo, então a ordem visual no mobile continua Logo → Headline → Texto → CTA.
 - Q: Qual tipografia? → A: Apenas Montserrat (como no template), self-hosted em `.woff2`.
 
@@ -40,12 +42,12 @@ Como um cliente em potencial interessado em moda urbana sofisticada, quero naveg
 
 **Why this priority**: É o núcleo do modelo de negócio e o principal ponto de conversão da loja. Se apenas a vitrine e a integração com WhatsApp existirem, a loja já é capaz de fechar pedidos e gerar receita.
 
-**Independent Test**: Pode ser testado de ponta a ponta navegando pela grade de produtos, alternando entre os filtros (Todos, Masculino, Feminino, Acessórios, Lançamentos), clicando nos cards de categoria, interagindo com o efeito de hover nas imagens e clicando no botão "Garantir no WhatsApp", verificando a abertura do mensageiro com a mensagem contendo o nome do produto escolhido.
+**Independent Test**: Pode ser testado de ponta a ponta navegando pela grade de produtos, alternando entre os filtros (Todos, Feminino, Infantil, Acessórios, Lançamentos), clicando nos cards de categoria, interagindo com o efeito de hover nas imagens e clicando no botão "Garantir no WhatsApp", verificando a abertura do mensageiro com a mensagem contendo o nome do produto escolhido.
 
 **Acceptance Scenarios**:
 
 1. **Given** que o usuário está na seção de Coleções, **When** clica em um filtro, **Then** a grade exibe imediatamente apenas os produtos correspondentes com suas fotos, tags de destaque e detalhes de material.
-2. **Given** que o usuário está na seção de Categorias, **When** clica no card "Masculino", "Feminino" ou "Acessórios", **Then** a página rola suavemente até a vitrine com o filtro correspondente já aplicado.
+2. **Given** que o usuário está na seção de Categorias, **When** clica no card "Feminino", "Infantil" ou "Acessórios", **Then** a página rola suavemente até a vitrine com o filtro correspondente já aplicado.
 3. **Given** que o usuário visualiza o card de um produto (ex: "Jaqueta Couro Premium"), **When** clica no botão "Garantir no WhatsApp", **Then** o sistema abre o WhatsApp (aplicativo ou Web) com o número oficial da loja e a mensagem pré-formatada contendo o nome do item selecionado.
 4. **Given** que o usuário passa o cursor sobre a foto de um produto em um dispositivo com mouse, **When** a ação ocorre, **Then** a imagem exibe um zoom suave e o botão "Garantir no WhatsApp" desliza para dentro da imagem.
 5. **Given** que o usuário está em um dispositivo de toque, **When** visualiza um card de produto, **Then** o botão "Garantir no WhatsApp" já está visível sem exigir hover, e o primeiro toque nele abre o WhatsApp.
@@ -122,8 +124,8 @@ Como um usuário navegando em qualquer ponto da página, quero ver avaliações 
 - **FR-005**: A Hero Section DEVE apresentar um banner de ponta a ponta com foto de modelos vestindo produtos da marca, sobreposição escura para legibilidade, conteúdo centralizado, um rótulo superior de destaque (ex: "Nova Coleção") e, como headline, o slogan da loja: "A moda que veste com magia". O slogan também aparece no rodapé, abaixo da logo, e no título da página.
 - **FR-006**: A Hero Section DEVE exibir o texto institucional corrido sem uso de tópicos ou listas: *"Na Scorpion gytano, traduzimos atitude e autenticidade em peças de vestuário e acessórios com acabamento premium. Nossa missão é oferecer coleções exclusivas que alinham conforto, caimento impecável e as principais tendências da moda urbana e sofisticada. Escolha seu look e fale diretamente com nossa equipe para garantir o seu."*
 - **FR-007**: A Hero Section DEVE conter um botão de CTA principal em vermelho `#DC2626` (hover `#B91C1C`) com o texto "Ver Coleção & Falar com Vendedor", que rola suavemente até `#colecoes`.
-- **FR-008**: A página DEVE exibir uma seção de Categorias com 3 cards de imagem alta (Masculino, Feminino, Acessórios). Clicar em um card rola até a vitrine e aplica o filtro correspondente.
-- **FR-009**: A seção de Coleções DEVE exibir uma grade responsiva de produtos com filtros: Todos (padrão), Masculino, Feminino, Acessórios e Lançamentos. O filtro "Lançamentos" exibe os produtos marcados como novidade, de qualquer categoria.
+- **FR-008**: A página DEVE exibir uma seção de Categorias com 3 cards de imagem alta (Feminino, Infantil, Acessórios). Clicar em um card rola até a vitrine e aplica o filtro correspondente.
+- **FR-009**: A seção de Coleções DEVE exibir uma grade responsiva de produtos com filtros: Todos (padrão), Feminino, Infantil, Acessórios e Lançamentos. O filtro "Lançamentos" exibe os produtos marcados como novidade, de qualquer categoria.
 - **FR-010**: Cada card de produto DEVE conter: imagem de alta definição com zoom suave no hover, tag de destaque opcional ("Mais Vendido", "Lançamento", "Edição Limitada"), nome da peça, breve descrição do tecido/material, preço indicativo opcional e botão "Garantir no WhatsApp" em verde oficial `#25D366` com texto `#111111`. Em dispositivos com mouse, o botão desliza para dentro da imagem no hover ou foco; em dispositivos de toque, fica sempre visível.
 - **FR-011**: O acionamento do botão "Garantir no WhatsApp" DEVE abrir o canal oficial da loja com mensagem contextualizada citando o nome do produto selecionado.
 - **FR-012**: A seção "Sobre a Marca" DEVE ser um banner de largura total com imagem de fundo e sobreposição escura, apresentando em texto corrido o conceito da Scorpion gytano, o rigor na curadoria de tecidos, costura e acabamento, e o compromisso com atendimento consultivo para dúvidas sobre tamanhos e medidas.
@@ -141,7 +143,7 @@ Como um usuário navegando em qualquer ponto da página, quero ver avaliações 
 ### Key Entities *(include if feature involves data)*
 
 - **Produto**: Representa uma peça de vestuário ou acessório comercializado pela loja.
-  - *Atributos*: Identificador, nome, categoria (Masculino, Feminino ou Acessórios), indicador de novidade (aparece em "Lançamentos"), descrição de tecido/material, tag de destaque opcional, URL da imagem principal, preço indicativo (opcional) e mensagem padrão para WhatsApp.
+  - *Atributos*: Identificador, nome, categoria (Feminino, Infantil ou Acessórios), indicador de novidade (aparece em "Lançamentos"), descrição de tecido/material, tag de destaque opcional, URL da imagem principal, preço indicativo (opcional) e mensagem padrão para WhatsApp.
 - **Categoria**: Representa o agrupamento temático dos produtos e alimenta os cards de categoria e os filtros.
   - *Atributos*: Identificador, título legível, imagem do card e lista de produtos associados.
 - **Diferencial Competitivo**: Representa os pilares de confiança e garantia oferecidos ao cliente.
@@ -167,7 +169,7 @@ Como um usuário navegando em qualquer ponto da página, quero ver avaliações 
 ## Assumptions
 
 - **Modelo de Conversão Humano**: A loja adota intencionalmente o modelo de atendimento e fechamento de pedidos via WhatsApp (conversational commerce), dispensando carrinho e checkout automático.
-- **Catálogo Curado**: O catálogo inicial tem de 8 a 12 peças distribuídas entre Masculino, Feminino e Acessórios, algumas marcadas como novidade, para manter o carregamento leve e a decisão ágil.
+- **Catálogo Curado**: O catálogo inicial tem de 8 a 12 peças distribuídas entre Feminino, Infantil e Acessórios, algumas marcadas como novidade, para manter o carregamento leve e a decisão ágil.
 - **Conteúdo Pendente do Cliente**: O número oficial do WhatsApp, as fotos de produtos, a foto da Hero, o logotipo e os depoimentos ainda serão fornecidos pela Scorpion gytano. Até lá, o desenvolvimento usa conteúdo de exemplo claramente identificado, centralizado na configuração da loja, que DEVE ser substituído antes da publicação.
 - **Publicação Fora do Escopo**: O deploy (ex: GitHub Pages) não faz parte desta feature e será feito pelo responsável do projeto depois da implementação. A URL canônica usada nas metatags é provisória.
 - **Número de Atendimento e Redes**: O número do WhatsApp e os perfis sociais ficam parametrizados em um único local para facilitar atualizações futuras.

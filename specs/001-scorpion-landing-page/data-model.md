@@ -36,9 +36,9 @@ Define as entidades de conteúdo da landing page. Os dados dinâmicos (configura
 
 | Campo | Tipo | Exemplo | Regra |
 |---|---|---|---|
-| `id` | `"masculino" \| "feminino" \| "acessorios"` | `"masculino"` | Único |
-| `label` | `string` | `"Masculino"` | Texto exibido no filtro e no card |
-| `image` | `string` | `"assets/img/categorias/masculino.webp"` | WebP existente |
+| `id` | `"feminino" \| "infantil" \| "acessorios"` | `"infantil"` | Único |
+| `label` | `string` | `"Infantil"` | Texto exibido no filtro e no card |
+| `image` | `string` | `"assets/img/categorias/infantil.webp"` | WebP existente |
 
 Filtros exibidos na vitrine (não são categorias): `todos` (padrão) e `lancamentos` (`isNew === true`).
 

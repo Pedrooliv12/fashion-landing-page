@@ -66,7 +66,7 @@ specs/                    # Especificação, plano e tarefas (Spec Kit)
 1. **Faça um fork ou clone** deste repositório.
 2. **Configure a loja** em `site/assets/js/config.js`: número do WhatsApp (só dígitos, com DDI e DDD), mensagens, Instagram, horário e a lista de produtos.
 3. **Troque as imagens** em `site/assets/img/` por arquivos WebP. As fotos de produto têm 600×800 px. O [Squoosh](https://squoosh.app) converte imagens direto no navegador.
-4. **Atualize a identidade**: os logotipos (`logo.svg`, `logo-light.svg`, `favicon.svg`) e os textos do `index.html`.
+4. **Atualize a identidade**: os logotipos (`logo.webp`, `logo-light.webp`, `favicon.png`, `apple-touch-icon.png`) e os textos do `index.html`.
 5. **Ajuste as cores** no `styles.css`, usando a paleta listada no topo do arquivo.
 6. **Remova os placeholders** antes de publicar. Procure por `EXEMPLO` no código: esses trechos são conteúdo provisório e precisam ser trocados, inclusive os depoimentos, que são fictícios.
 

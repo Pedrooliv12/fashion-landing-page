@@ -97,7 +97,7 @@ Todos os pares atendem WCAG AA (SC-008) e contribuem para Acessibilidade ≥ 90 
 ## 4. Hero e LCP
 
 ### Decisão
-- A foto da Hero é um `<img>` real (não `background-image`), com `object-cover`, `fetchpriority="high"`, sem `loading="lazy"`, e `srcset` em 3 larguras: `hero-768.webp`, `hero-1280.webp` e `hero-1920.webp`.
+- A foto da Hero é um `<img>` real (não `background-image`), com `object-cover`, `fetchpriority="high"`, sem `loading="lazy"`, e `srcset` em 3 larguras: `hero-768.webp`, `hero-1280.webp` e `hero-1536.webp` (a maior foto horizontal do cliente tem 1536px). Fica dentro de um `<picture>` com um `<source media="(orientation: portrait)">` que serve `hero-retrato-768.webp` e `hero-retrato-1024.webp` em telas em pé; o `<head>` tem um preload para cada orientação.
 - O contêiner usa **altura mínima, não fixa**: `min-h-[85svh] py-16`. Em 320×568, o conteúdo (selo, h1 em 4 linhas, cerca de 11 linhas de texto e o botão) mede cerca de 600px; com altura fixa e `overflow-hidden`, o botão principal seria cortado. A unidade `svh` evita saltos quando a barra do navegador móvel aparece ou some.
 - `<link rel="preload" as="image" imagesrcset="…" imagesizes="100vw">` no `<head>`.
 - Sobreposição `bg-ink/60` (mínimo calculado em §2).
@@ -154,7 +154,7 @@ O Font Awesome por CDN custa cerca de 100 KB de CSS e fontes para cerca de 12 í
 - Produtos e categorias definidos em `site/assets/js/config.js`, junto com `StoreConfig`. É o único arquivo que a loja precisa editar.
 - `main.js` renderiza os cards em `#products-grid` e aplica filtros:
   - `todos` → todos os produtos;
-  - `masculino` / `feminino` / `acessorios` → `product.category`;
+  - `feminino` / `infantil` / `acessorios` → `product.category`;
   - `lancamentos` → `product.isNew === true` (Clarifications).
 - Botões de filtro com `aria-pressed`; uma linha de status `#products-status` com `aria-live="polite"` anuncia o resultado ("Mostrando 4 peças · Feminino"), em vez de colocar `aria-live` na grade inteira, o que faria o leitor de tela ler todos os cards; os cards de categoria têm `href="#colecoes"` e `data-filter-target="{categoria}"`, então funcionam como âncora mesmo sem JS.
 - Card de produto: imagem `aspect-[3/4]` com `group-hover:scale-105`; o botão "Garantir no WhatsApp" fica abaixo das informações no mobile e, em dispositivos com hover, desliza sobre a imagem (`translate-y-full` → `group-hover:translate-y-0 group-focus-within:translate-y-0`).

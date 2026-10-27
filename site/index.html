@@ -28,13 +28,23 @@
     <meta property="og:image:alt" content="Modelo de casaco bordô segurando sacolas de compras" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 
     <link rel="preload" href="assets/fonts/montserrat-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link
       rel="preload"
       as="image"
-      imagesrcset="assets/img/hero/hero-768.webp 768w, assets/img/hero/hero-1280.webp 1280w, assets/img/hero/hero-1920.webp 1920w"
+      media="(orientation: portrait)"
+      imagesrcset="assets/img/hero/hero-retrato-768.webp 768w, assets/img/hero/hero-retrato-1024.webp 1024w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      media="(orientation: landscape)"
+      imagesrcset="assets/img/hero/hero-768.webp 768w, assets/img/hero/hero-1280.webp 1280w, assets/img/hero/hero-1536.webp 1536w"
       imagesizes="100vw"
       fetchpriority="high"
     />
@@ -50,7 +60,7 @@
         "@type": "ClothingStore",
         "name": "Scorpion gytano",
         "url": "https://pedrooliv12.github.io/fashion-landing-page/",
-        "logo": "https://pedrooliv12.github.io/fashion-landing-page/assets/img/logo.svg",
+        "logo": "https://pedrooliv12.github.io/fashion-landing-page/assets/img/logo.webp",
         "image": "https://pedrooliv12.github.io/fashion-landing-page/assets/img/og-image.jpg",
         "description": "Moda urbana premium com atendimento personalizado pelo WhatsApp.",
         "slogan": "A moda que veste com magia",
@@ -74,17 +84,17 @@
     <!-- Cabeçalho (FR-001 a FR-004, contracts §2) -->
     <header id="site-header" class="sticky top-0 z-40 border-b border-line bg-white">
       <div class="container-page flex h-16 items-center justify-between gap-4 lg:h-[72px]">
-        <a id="brand-logo" href="#inicio" class="flex min-h-11 items-center">
-          <img src="assets/img/logo.svg" alt="Scorpion gytano" width="242" height="32" class="h-5 w-auto sm:h-6" />
+        <a id="brand-logo" href="#inicio" class="flex min-h-11 shrink-0 items-center">
+          <img src="assets/img/logo.webp" alt="Scorpion gytano" width="257" height="40" class="h-6 w-auto min-[375px]:h-8 sm:h-10 lg:h-8" />
         </a>
 
         <nav aria-label="Principal" class="hidden lg:flex">
           <ul class="flex items-center gap-8">
-            <li><a data-nav-link href="#inicio" class="text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Início</a></li>
-            <li><a data-nav-link href="#diferenciais" class="text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Diferenciais</a></li>
-            <li><a data-nav-link href="#colecoes" class="text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Coleções</a></li>
-            <li><a data-nav-link href="#sobre" class="text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Sobre a Marca</a></li>
-            <li><a data-nav-link href="#depoimentos" class="text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Depoimentos</a></li>
+            <li><a data-nav-link href="#inicio" class="whitespace-nowrap text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Início</a></li>
+            <li><a data-nav-link href="#diferenciais" class="whitespace-nowrap text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Diferenciais</a></li>
+            <li><a data-nav-link href="#colecoes" class="whitespace-nowrap text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Coleções</a></li>
+            <li><a data-nav-link href="#sobre" class="whitespace-nowrap text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Sobre a Marca</a></li>
+            <li><a data-nav-link href="#depoimentos" class="whitespace-nowrap text-xs font-medium uppercase tracking-[0.15em] text-ink transition-colors hover:text-brand-dark">Depoimentos</a></li>
           </ul>
         </nav>
 
@@ -96,7 +106,7 @@
             class="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 bg-whatsapp px-3 text-sm font-semibold text-ink transition-opacity hover:opacity-90 xl:px-5"
           >
             <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" /></svg>
-            <span class="hidden xl:inline">Atendimento no WhatsApp</span>
+            <span class="hidden whitespace-nowrap xl:inline">Atendimento no WhatsApp</span>
           </a>
 
           <button
@@ -130,17 +140,27 @@
       <!-- Hero (FR-005 a FR-007, contracts §3) -->
       <!-- pb-24 no mobile: mantém o botão principal acima da área do botão flutuante -->
       <section id="inicio" class="relative flex min-h-[85svh] scroll-mt-24 items-center justify-center overflow-hidden pb-24 pt-10 text-center text-white md:py-16">
-        <img
-          id="hero-image"
-          src="assets/img/hero/hero-1280.webp"
-          srcset="assets/img/hero/hero-768.webp 768w, assets/img/hero/hero-1280.webp 1280w, assets/img/hero/hero-1920.webp 1920w"
-          sizes="100vw"
-          fetchpriority="high"
-          width="1920"
-          height="1080"
-          alt="Modelo de casaco bordô e óculos escuros segurando sacolas de compras"
-          class="absolute inset-0 h-full w-full object-cover object-[65%_center]"
-        />
+        <!-- Telas em pé recebem uma foto vertical; a foto horizontal ficaria cortada e borrada -->
+        <picture>
+          <source
+            media="(orientation: portrait)"
+            srcset="assets/img/hero/hero-retrato-768.webp 768w, assets/img/hero/hero-retrato-1024.webp 1024w"
+            sizes="100vw"
+            width="1024"
+            height="1536"
+          />
+          <img
+            id="hero-image"
+            src="assets/img/hero/hero-1280.webp"
+            srcset="assets/img/hero/hero-768.webp 768w, assets/img/hero/hero-1280.webp 1280w, assets/img/hero/hero-1536.webp 1536w"
+            sizes="100vw"
+            fetchpriority="high"
+            width="1536"
+            height="864"
+            alt="Modelos da Scorpion gytano vestindo as peças da coleção"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </picture>
         <div class="absolute inset-0 bg-ink/60" aria-hidden="true"></div>
 
         <div class="relative z-10 flex max-w-2xl flex-col items-center gap-4 px-5 md:gap-5">
@@ -192,17 +212,8 @@
           </div>
 
           <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <a href="#colecoes" data-filter-target="masculino" class="category-card group relative block h-96 overflow-hidden">
-              <img src="assets/img/categorias/masculino.webp" alt="Homem de terno azul-marinho caminhando na cidade" width="600" height="800" loading="lazy" class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105" />
-              <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-transparent" aria-hidden="true"></div>
-              <div class="absolute inset-x-0 bottom-0 p-6 text-white">
-                <h3 class="text-2xl font-semibold">Masculino</h3>
-                <span class="mt-2 inline-block border-b-2 border-brand pb-0.5 text-xs font-semibold uppercase tracking-[0.15em]">Ver peças</span>
-              </div>
-            </a>
-
             <a href="#colecoes" data-filter-target="feminino" class="category-card group relative block h-96 overflow-hidden">
-              <img src="assets/img/categorias/feminino.webp" alt="Mulher de sobretudo caramelo com cinto" width="600" height="800" loading="lazy" class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105" />
+              <img src="assets/img/categorias/feminino.webp" alt="Mulher de vestido longo vinho com mangas de renda diante de uma porta em arco" width="600" height="800" loading="lazy" class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-transparent" aria-hidden="true"></div>
               <div class="absolute inset-x-0 bottom-0 p-6 text-white">
                 <h3 class="text-2xl font-semibold">Feminino</h3>
@@ -210,8 +221,17 @@
               </div>
             </a>
 
+            <a href="#colecoes" data-filter-target="infantil" class="category-card group relative block h-96 overflow-hidden">
+              <img src="assets/img/categorias/infantil.webp" alt="Menina sorrindo no jardim usando vestido branco rodado com laço" width="600" height="800" loading="lazy" class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-transparent" aria-hidden="true"></div>
+              <div class="absolute inset-x-0 bottom-0 p-6 text-white">
+                <h3 class="text-2xl font-semibold">Infantil</h3>
+                <span class="mt-2 inline-block border-b-2 border-brand pb-0.5 text-xs font-semibold uppercase tracking-[0.15em]">Ver peças</span>
+              </div>
+            </a>
+
             <a href="#colecoes" data-filter-target="acessorios" class="category-card group relative block h-96 overflow-hidden">
-              <img src="assets/img/categorias/acessorios.webp" alt="Sapatos sociais de couro marrom em uma caixa" width="600" height="800" loading="lazy" class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105" />
+              <img src="assets/img/categorias/acessorios.webp" alt="Bolsa clutch prateada com estampa em tons de azul sobre granito" width="600" height="800" loading="lazy" class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-transparent" aria-hidden="true"></div>
               <div class="absolute inset-x-0 bottom-0 p-6 text-white">
                 <h3 class="text-2xl font-semibold">Acessórios</h3>
@@ -232,8 +252,8 @@
 
           <div id="product-filters" role="group" aria-label="Filtrar produtos" class="-mx-5 mb-4 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:justify-center sm:px-0">
             <button type="button" data-filter="todos" aria-pressed="true" class="min-h-11 shrink-0 border border-ink bg-ink px-5 text-xs font-semibold uppercase tracking-wider text-white transition-colors">Todos</button>
-            <button type="button" data-filter="masculino" aria-pressed="false" class="min-h-11 shrink-0 border border-line bg-white px-5 text-xs font-semibold uppercase tracking-wider text-ink transition-colors">Masculino</button>
             <button type="button" data-filter="feminino" aria-pressed="false" class="min-h-11 shrink-0 border border-line bg-white px-5 text-xs font-semibold uppercase tracking-wider text-ink transition-colors">Feminino</button>
+            <button type="button" data-filter="infantil" aria-pressed="false" class="min-h-11 shrink-0 border border-line bg-white px-5 text-xs font-semibold uppercase tracking-wider text-ink transition-colors">Infantil</button>
             <button type="button" data-filter="acessorios" aria-pressed="false" class="min-h-11 shrink-0 border border-line bg-white px-5 text-xs font-semibold uppercase tracking-wider text-ink transition-colors">Acessórios</button>
             <button type="button" data-filter="lancamentos" aria-pressed="false" class="min-h-11 shrink-0 border border-line bg-white px-5 text-xs font-semibold uppercase tracking-wider text-ink transition-colors">Lançamentos</button>
           </div>
@@ -252,7 +272,7 @@
 
       <!-- Sobre a Marca (FR-012, contracts §8) -->
       <section id="sobre" class="relative scroll-mt-24 overflow-hidden py-24 text-center text-white">
-        <img src="assets/img/sobre.webp" alt="" width="1600" height="900" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
+        <img src="assets/img/sobre.webp" alt="" width="1200" height="675" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
         <div class="absolute inset-0 bg-ink/60" aria-hidden="true"></div>
 
         <!-- EXEMPLO: revisar o texto institucional com a loja -->
@@ -352,7 +372,7 @@
     <footer id="rodape" class="scroll-mt-24 bg-ink pb-24 pt-16 text-line md:pb-8">
       <div class="container-page grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <img src="assets/img/logo-light.svg" alt="Scorpion gytano" width="242" height="32" loading="lazy" class="h-6 w-auto" />
+          <img src="assets/img/logo-light.webp" alt="Scorpion gytano" width="257" height="40" loading="lazy" class="h-8 w-auto" />
           <p class="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-white">A moda que veste com magia</p>
           <p class="mt-4 text-sm leading-relaxed">Moda urbana e sofisticada, com acabamento premium e atendimento de verdade.</p>
           <div class="mt-4 flex gap-2">

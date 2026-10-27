@@ -85,13 +85,14 @@ site/                                # Entregável publicado (todo o código do 
     ├── fonts/
     │   └── montserrat-latin-variable.woff2
     └── img/
-        ├── logo.svg                 # ou logo.webp, se não houver vetor
-        ├── logo-light.svg           # versão clara para o rodapé
-        ├── favicon.svg
+        ├── logo.webp                # versão horizontal, recortada do logo do cliente
+        ├── logo-light.webp          # versão clara para o rodapé
+        ├── favicon.png              # escorpião, 64×64
+        ├── apple-touch-icon.png     # escorpião sobre branco, 180×180
         ├── og-image.jpg             # 1200×630, só para prévias de link
-        ├── hero/hero-{768,1280,1920}.webp
+        ├── hero/hero-{768,1280,1536}.webp e hero-retrato-{768,1024}.webp
         ├── sobre.webp
-        ├── categorias/{masculino,feminino,acessorios}.webp
+        ├── categorias/{feminino,infantil,acessorios}.webp
         └── produtos/{id}.webp       # 600×800
 ```
 
@@ -103,5 +104,5 @@ site/                                # Entregável publicado (todo o código do 
 |---|---|---|
 | `styles.css` não minificado (≈ 27 KB) | Sem build, o CSS precisa ser legível para ser mantido à mão | Minificar exigiria uma ferramenta de build, que a Constituição v2.0.0 proíbe; o ganho seria de ≈ 13 KB |
 | `og-image.jpg` em JPG | Prévias de link no WhatsApp e nas redes têm suporte mais amplo a JPG | Em WebP, a prévia pode não aparecer em alguns apps; a imagem não é exibida na página |
-| `logo.svg`, `logo-light.svg` e `favicon.svg` em SVG | Logos e ícones são vetoriais: o SVG é nítido em qualquer densidade de tela e menor que um WebP equivalente (o Princípio IV pede WebP "prioritariamente", não exclusivamente) | Em WebP, o logo perderia nitidez em telas de alta densidade ou exigiria várias resoluções |
+| Logo em WebP desenhado a 3× e favicon em PNG | O cliente só tem o logo em JPG (1024×1536, vertical, fundo branco). As versões do site são recortes dele com fundo transparente, rearrumados na horizontal para caber no cabeçalho | Usar o JPG inteiro deixaria o nome com ≈ 3px de altura no cabeçalho e um retângulo branco no rodapé escuro; um SVG exigiria redesenhar o logo |
 | Dois botões "Garantir" por card (toque e mouse) | Permite deslizar o botão no desktop, como no template, sem esconder o CTA no toque | Um único botão animado ficaria escondido no toque ou perderia o efeito do template |

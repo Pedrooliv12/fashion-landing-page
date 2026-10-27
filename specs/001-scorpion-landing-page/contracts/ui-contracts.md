@@ -70,7 +70,7 @@ Grade `grid-cols-1 md:grid-cols-3` (3 itens; sem "Envio", a loja não entrega); 
 
 ## 5. Categorias (`#categorias`)
 
-3 cards `a.category-card[href="#colecoes"][data-filter-target="{masculino|feminino|acessorios}"]`:
+3 cards `a.category-card[href="#colecoes"][data-filter-target="{feminino|infantil|acessorios}"]`:
 - Altura `h-96`, imagem `object-cover` com `motion-safe:group-hover:scale-105` e degradê `bg-gradient-to-t from-ink/70 via-ink/20 to-transparent`; o texto fica na base, sobre a faixa mais escura.
 - `<h3>` branco e o texto "Ver peças" sublinhado em `border-brand`.
 - Ao clicar: rola até `#colecoes` (via âncora) e o JS aplica o filtro correspondente.
@@ -80,7 +80,7 @@ Grade `grid-cols-1 md:grid-cols-3` (3 itens; sem "Envio", a loja não entrega); 
 ## 6. Coleções (`#colecoes`)
 
 ### Filtros (`#product-filters`, `role="group"`, `aria-label="Filtrar produtos"`)
-`<button data-filter="todos|masculino|feminino|acessorios|lancamentos" aria-pressed="true|false">`; o ativo fica com `bg-ink text-white`, os demais com `border-line`. Altura mínima de 44px; no mobile, rolagem horizontal **dentro** do grupo (`overflow-x-auto`), sem rolagem da página.
+`<button data-filter="todos|feminino|infantil|acessorios|lancamentos" aria-pressed="true|false">`; o ativo fica com `bg-ink text-white`, os demais com `border-line`. Altura mínima de 44px; no mobile, rolagem horizontal **dentro** do grupo (`overflow-x-auto`), sem rolagem da página.
 
 ### Grade (`#products-grid`)
 `grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6`. Com 2 colunas a partir de 480px, cada card tem pelo menos cerca de 208px, o suficiente para o botão de toque. Linha de status `#products-status` (`aria-live="polite"`, `text-sm text-muted`) acima da grade, com o texto "Mostrando {n} peças · {filtro}". Mensagem `#products-empty` quando o filtro não tem produtos.

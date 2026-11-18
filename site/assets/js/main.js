@@ -116,7 +116,7 @@
       media.append(
         el(
           "span",
-          "absolute left-3 top-3 z-10 bg-brand px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white",
+          "absolute left-3 top-3 z-10 border-l-2 border-brand bg-white/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-ink backdrop-blur-sm",
           product.badge
         )
       );

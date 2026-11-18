@@ -9,7 +9,7 @@ window.StoreConfig = {
   brandName: "Scorpion gytano",
 
   // Apenas dígitos: DDI 55 + DDD + número (12 ou 13 dígitos)
-  whatsappPhone: "5511999999999", // EXEMPLO: substituir pelo número oficial
+  whatsappPhone: "558293095079", // EXEMPLO: substituir pelo número oficial
 
   // Mensagens pré-preenchidas por origem do clique (contracts/ui-contracts.md §7)
   messages: {
@@ -21,8 +21,8 @@ window.StoreConfig = {
   },
 
   instagramHandle: "@scorpion.gytano",
-  instagramUrl: "https://www.instagram.com/scorpion.gytano/",
-  openingHours: "Seg a Sáb, 9h às 20h", // EXEMPLO: confirmar horário
+  instagramUrl: "https://www.instagram.com/scorpion_gytano",
+  openingHours: "Seg a Sáb, 9h às 18h", // EXEMPLO: confirmar horário
 };
 
 window.CATEGORIES = [
@@ -37,7 +37,7 @@ window.CATEGORIES = [
  * - name: entre 3 e 80 caracteres
  * - category: "feminino" | "infantil" | "acessorios"
  * - isNew: true faz a peça aparecer no filtro "Lançamentos"
- * - badge (opcional): "Mais Vendido" | "Lançamento" | "Edição Limitada"
+ * - badge (opcional): "Mais Vendido" | "Lançamento"
  * - price (opcional): texto livre, ex: "R$ 349,90"
  * - image: assets/img/produtos/{id}.webp, 600x800 (proporção 3:4)
  * - alt: descrição da peça para leitores de tela
@@ -67,7 +67,6 @@ window.PRODUCTS = [
     name: "Vestido Vinho Ombro Único",
     category: "feminino",
     material: "Manga longa, fenda lateral e argola dourada na cintura",
-    badge: "Edição Limitada",
     image: "assets/img/produtos/vestido-vinho-ombro-unico.webp",
     alt: "Mulher caminhando na rua com vestido vinho de um ombro só e fenda lateral",
   },
@@ -130,7 +129,6 @@ window.PRODUCTS = [
     name: "Bolsa Oval Rosé com Strass",
     category: "acessorios",
     material: "Frente em strass, verso acetinado dourado e corrente",
-    badge: "Edição Limitada",
     image: "assets/img/produtos/bolsa-oval-rose-strass.webp",
     alt: "Bolsa oval rosé mostrada de frente, com strass, e de costas, em dourado liso",
   },

@@ -18,7 +18,7 @@ Contratos da interface: ordem das seções, IDs, atributos `data-*` usados pelo 
 | 4 | Diferenciais | `<section id="diferenciais">` | `bg-white`, borda inferior `border-line` |
 | 5 | Categorias | `<section id="categorias">` | `bg-white` |
 | 6 | Coleções | `<section id="colecoes">` | `bg-surface` |
-| 7 | Sobre a Marca | `<section id="sobre">` | Foto + `bg-ink/60` |
+| 7 | Como Atendemos (antigo "Sobre a Marca") | `<section id="sobre">` | Foto + `bg-ink/60` |
 | 8 | Depoimentos & Instagram | `<section id="depoimentos">` | `bg-white` |
 | 9 | Rodapé | `<footer id="rodape">` | `bg-ink` |
 | — | Botão flutuante | `#floating-whatsapp` | `bg-whatsapp` |
@@ -89,7 +89,7 @@ Grade `grid-cols-1 md:grid-cols-3` (3 itens; sem "Envio", a loja não entrega); 
 ```text
 article.group (bg-white)
 ├── div.relative.overflow-hidden.aspect-[3/4]
-│   ├── span.badge?        absolute top-3 left-3, bg-brand text-white text-xs uppercase   (se product.badge)
+│   ├── span.badge?        absolute top-3 left-3, bg-white/80 + backdrop-blur-sm, fio border-l-2 border-brand, text-ink text-[10px] uppercase (se product.badge; discreto para não cobrir a foto)
 │   ├── img                object-cover, loading="lazy", width=600 height=800, alt=product.alt,
 │   │                      motion-safe:group-hover:scale-105
 │   └── a[data-whatsapp="product"][data-product-name]  ← versão desktop
@@ -123,9 +123,9 @@ Ambos os botões: `bg-whatsapp hover:opacity-90 text-ink uppercase` (verde ofici
 
 ---
 
-## 8. Sobre a Marca (`#sobre`)
+## 8. Como Atendemos (`#sobre`)
 
-Banner de largura total no padrão `.banner-promo` do template: imagem `sobre.webp` (`loading="lazy"`) + `bg-ink/60`, `py-24`, conteúdo centralizado com largura máxima `max-w-2xl`: rótulo **branco** em caixa alta com um traço decorativo vermelho acima (`h-0.5 w-10 bg-brand mx-auto`), `<h2>` e 2 parágrafos corridos (FR-012), tudo em branco.
+Banner de largura total no padrão `.banner-promo` do template: imagem `sobre.webp` (`loading="lazy"`) + `bg-ink/60`, `py-24`, conteúdo centralizado com largura máxima `max-w-2xl`: rótulo **branco** em caixa alta com um traço decorativo vermelho acima (`h-0.5 w-10 bg-brand mx-auto`), rótulo "Atendimento consultivo", `<h2>` "Ajuda na medida certa" e 1 parágrafo corrido (FR-012), tudo em branco.
 
 ---
 

@@ -53,7 +53,7 @@ Filtros exibidos na vitrine (não são categorias): `todos` (padrão) e `lancame
 | `category` | `Category.id` | Sim | Um dos 3 ids válidos |
 | `isNew` | `boolean` | Não (padrão `false`) | `true` → aparece no filtro "Lançamentos" |
 | `material` | `string` | Sim | ex: `"Couro legítimo com forro térmico"` |
-| `badge` | `"Mais Vendido" \| "Lançamento" \| "Edição Limitada"` | Não | Exatamente um dos 3 valores do FR-010 |
+| `badge` | `"Mais Vendido" \| "Lançamento"` | Não | Exatamente um dos 2 valores do FR-010 |
 | `price` | `string` | Não | Texto livre formatado, ex: `"R$ 349,90"` |
 | `image` | `string` | Sim | `assets/img/produtos/{id}.webp`, proporção 3:4, 600×800 |
 | `alt` | `string` | Sim | Descrição da peça para acessibilidade |

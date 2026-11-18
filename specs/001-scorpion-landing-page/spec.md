@@ -27,8 +27,10 @@
 - Q (ajuste pós-implementação): A loja faz entregas? → A: Não. Removidos o diferencial "Envio Rápido e Seguro", o depoimento sobre entrega e a pergunta sobre "opções de entrega" na mensagem do WhatsApp dos cards. Os Diferenciais passam a ter 3 itens.
 - Q (ajuste pós-implementação): A seção Comunidade deve ter o mosaico de fotos do Instagram? → A: Não. O mosaico foi removido; a seção mantém o título "Siga @scorpion.gytano", o convite e o botão "Seguir no Instagram".
 - Q (ajuste pós-implementação): Quais categorias a loja tem? → A: Feminino, Infantil e Acessórios. As fotos enviadas pelo cliente são de moda feminina, infantil e bolsas, sem roupa masculina adulta, então "Masculino" deu lugar a "Infantil". As fotos de exemplo foram trocadas pelas da loja, evitando as que têm marca de terceiros, marca d'água, código "REF." na imagem ou print de tela.
+- Q (ajuste pós-implementação): Como fica a seção que era "Sobre a Marca"? → A: Sem o parágrafo de curadoria, ela fala só do atendimento consultivo. Passou a se chamar "Como Atendemos" no menu e no rodapé, com o rótulo "Atendimento consultivo" e o título "Ajuda na medida certa". O id `#sobre` foi mantido.
+- Q (ajuste pós-implementação): A loja faz curadoria ou vende peças exclusivas? → A: Não. Saíram o parágrafo de curadoria do "Sobre a Marca", o diferencial "Peças Exclusivas & Qualidade Premium" (trocado por "Moda Feminina e Infantil", que reflete o catálogo) e a palavra "exclusivas" da Hero e da descrição de compartilhamento. O selo "Edição Limitada" também deixou de existir. Nenhum texto da página afirma curadoria nem exclusividade.
 - Q (ajuste pós-implementação): Como a Hero fica no celular? → A: Com `<picture>`: telas em pé recebem uma foto vertical e telas deitadas, a horizontal, porque nenhuma foto horizontal do cliente tem resolução para ser cortada na vertical sem perder nitidez.
-- Q: Qual a ordem das seções? → A: A do template: Faixa superior → Cabeçalho → Hero → Diferenciais → Categorias → Coleções → Sobre a Marca → Depoimentos & Instagram → Rodapé.
+- Q: Qual a ordem das seções? → A: A do template: Faixa superior → Cabeçalho → Hero → Diferenciais → Categorias → Coleções → Como Atendemos → Depoimentos & Instagram → Rodapé.
 - Q: O que o botão principal da Hero faz? → A: Rola suavemente até a vitrine (`#colecoes`). O WhatsApp já está acessível pelo cabeçalho e pelo botão flutuante.
 - Q: "Lançamentos" é uma categoria? → A: Não. É um filtro que mostra os produtos marcados como novidade, de qualquer categoria. As categorias são Feminino, Infantil e Acessórios.
 - Q: Onde fica o logotipo no mobile? → A: Somente no cabeçalho fixo, logo acima da Hero. A Hero não repete o logo, então a ordem visual no mobile continua Logo → Headline → Texto → CTA.
@@ -76,12 +78,12 @@ Como um comprador exigente que valoriza qualidade e segurança, quero conhecer a
 
 **Why this priority**: Reduz a fricção e as objeções de compra, aumentando a percepção de valor dos produtos e a taxa de conversão final.
 
-**Independent Test**: Pode ser testado verificando a faixa de Diferenciais logo abaixo da Hero e rolando até a seção "Sobre a Marca", conferindo a clareza do texto sobre a curadoria de tecidos e a exibição legível dos 4 benefícios.
+**Independent Test**: Pode ser testado verificando a faixa de Diferenciais logo abaixo da Hero e rolando até a seção "Como Atendemos", conferindo a clareza do texto sobre o atendimento consultivo e a exibição legível dos 3 benefícios.
 
 **Acceptance Scenarios**:
 
-1. **Given** que o visitante passa da Hero, **When** visualiza a faixa de diferenciais, **Then** identifica claramente os 3 pilares: Atendimento VIP via WhatsApp, Pagamento Facilitado (Pix e Cartão de Crédito) e Peças Exclusivas & Qualidade Premium.
-2. **Given** que o usuário navega até a seção "Sobre a Marca", **When** lê o conteúdo institucional, **Then** compreende o conceito da marca, a curadoria de tecidos, cortes e durabilidade, e o diferencial de consultoria de medidas com atendente humano.
+1. **Given** que o visitante passa da Hero, **When** visualiza a faixa de diferenciais, **Then** identifica claramente os 3 pilares: Atendimento VIP via WhatsApp, Pagamento Facilitado (Pix e Cartão de Crédito) e Moda Feminina e Infantil.
+2. **Given** que o usuário navega até a seção "Como Atendemos", **When** lê o conteúdo institucional, **Then** compreende o diferencial de consultoria de tamanhos e medidas com atendente humano pelo WhatsApp.
 
 ---
 
@@ -118,27 +120,27 @@ Como um usuário navegando em qualquer ponto da página, quero ver avaliações 
 ### Functional Requirements
 
 - **FR-001**: O sistema DEVE disponibilizar um cabeçalho fixo (sticky) de fundo branco com o logotipo oficial da "Scorpion gytano" alinhado à esquerda.
-- **FR-002**: O cabeçalho DEVE conter links de navegação com rolagem suave para as seções, na ordem da página: "Início", "Diferenciais", "Coleções", "Sobre a Marca" e "Depoimentos".
+- **FR-002**: O cabeçalho DEVE conter links de navegação com rolagem suave para as seções, na ordem da página: "Início", "Diferenciais", "Coleções", "Como Atendemos" e "Depoimentos".
 - **FR-003**: O cabeçalho DEVE incluir, no canto direito, o botão "Atendimento no WhatsApp" em verde oficial `#25D366` com texto `#111111` e o ícone oficial do aplicativo.
 - **FR-004**: Em telas menores que 1024px, o cabeçalho DEVE oferecer um menu responsivo (hambúrguer) com área de toque mínima de 44x44px, que fecha automaticamente ao clicar em um link.
 - **FR-005**: A Hero Section DEVE apresentar um banner de ponta a ponta com foto de modelos vestindo produtos da marca, sobreposição escura para legibilidade, conteúdo centralizado, um rótulo superior de destaque (ex: "Nova Coleção") e, como headline, o slogan da loja: "A moda que veste com magia". O slogan também aparece no rodapé, abaixo da logo, e no título da página.
-- **FR-006**: A Hero Section DEVE exibir o texto institucional corrido sem uso de tópicos ou listas: *"Na Scorpion gytano, traduzimos atitude e autenticidade em peças de vestuário e acessórios com acabamento premium. Nossa missão é oferecer coleções exclusivas que alinham conforto, caimento impecável e as principais tendências da moda urbana e sofisticada. Escolha seu look e fale diretamente com nossa equipe para garantir o seu."*
+- **FR-006**: A Hero Section DEVE exibir o texto institucional corrido sem uso de tópicos ou listas: *"Na Scorpion gytano, traduzimos atitude e autenticidade em peças de vestuário e acessórios com acabamento premium. Nossa missão é oferecer coleções que alinham conforto, caimento impecável e as principais tendências da moda urbana e sofisticada. Escolha seu look e fale diretamente com nossa equipe para garantir o seu."*
 - **FR-007**: A Hero Section DEVE conter um botão de CTA principal em vermelho `#DC2626` (hover `#B91C1C`) com o texto "Ver Coleção & Falar com Vendedor", que rola suavemente até `#colecoes`.
 - **FR-008**: A página DEVE exibir uma seção de Categorias com 3 cards de imagem alta (Feminino, Infantil, Acessórios). Clicar em um card rola até a vitrine e aplica o filtro correspondente.
 - **FR-009**: A seção de Coleções DEVE exibir uma grade responsiva de produtos com filtros: Todos (padrão), Feminino, Infantil, Acessórios e Lançamentos. O filtro "Lançamentos" exibe os produtos marcados como novidade, de qualquer categoria.
-- **FR-010**: Cada card de produto DEVE conter: imagem de alta definição com zoom suave no hover, tag de destaque opcional ("Mais Vendido", "Lançamento", "Edição Limitada"), nome da peça, breve descrição do tecido/material, preço indicativo opcional e botão "Garantir no WhatsApp" em verde oficial `#25D366` com texto `#111111`. Em dispositivos com mouse, o botão desliza para dentro da imagem no hover ou foco; em dispositivos de toque, fica sempre visível.
+- **FR-010**: Cada card de produto DEVE conter: imagem de alta definição com zoom suave no hover, tag de destaque opcional ("Mais Vendido" ou "Lançamento"), nome da peça, breve descrição do tecido/material, preço indicativo opcional e botão "Garantir no WhatsApp" em verde oficial `#25D366` com texto `#111111`. Em dispositivos com mouse, o botão desliza para dentro da imagem no hover ou foco; em dispositivos de toque, fica sempre visível.
 - **FR-011**: O acionamento do botão "Garantir no WhatsApp" DEVE abrir o canal oficial da loja com mensagem contextualizada citando o nome do produto selecionado.
-- **FR-012**: A seção "Sobre a Marca" DEVE ser um banner de largura total com imagem de fundo e sobreposição escura, apresentando em texto corrido o conceito da Scorpion gytano, o rigor na curadoria de tecidos, costura e acabamento, e o compromisso com atendimento consultivo para dúvidas sobre tamanhos e medidas.
+- **FR-012**: A seção "Como Atendemos" DEVE ser um banner de largura total com imagem de fundo e sobreposição escura, apresentando em texto corrido o compromisso da Scorpion gytano com atendimento consultivo para dúvidas sobre tamanhos e medidas. O texto não afirma curadoria nem exclusividade, porque a loja não trabalha assim.
 - **FR-013**: A faixa de Diferenciais, posicionada logo após a Hero, DEVE apresentar 3 itens com ícone SVG, título e descrição curta (a loja não faz entregas, então nenhum item ou texto da página promete envio):
   1. Atendimento VIP via WhatsApp — ajuda personalizada na escolha de tamanho e estilo;
   2. Pagamento Facilitado — Pix e Cartão de Crédito;
-  3. Peças Exclusivas & Qualidade Premium — curadoria rigorosa de tecidos e acabamento.
+  3. Moda Feminina e Infantil — roupas e acessórios para você e para as crianças.
 - **FR-014**: A seção de Prova Social & Comunidade DEVE conter de 3 a 4 depoimentos de clientes (nome, nota e relato sobre qualidade, caimento e atendimento) e uma chamada de comunidade (título, convite para seguir e marcar o perfil `@scorpion.gytano` e botão "Seguir no Instagram"), sem mosaico de fotos.
 - **FR-015**: O rodapé DEVE ter fundo `#111111`, organizado em colunas: marca e rede social (somente Instagram; a loja não tem outros perfis); atalhos de navegação para todas as seções; atendimento, com horário de funcionamento e botão "Falar no WhatsApp" em verde oficial `#25D366` com texto `#111111`; e copyright.
 - **FR-016**: O sistema DEVE manter um botão flutuante do WhatsApp no canto inferior direito, em verde `#25D366` com ícone branco e animação pulsante suave, com link direto para o atendimento. O botão não pode cobrir conteúdo, incluindo o rodapé.
 - **FR-017**: Uma faixa superior fina (fundo `#111111`, texto branco) DEVE ficar acima do cabeçalho com uma mensagem curta de benefício (ex: "Atendimento VIP pelo WhatsApp · Pix e Cartão de Crédito").
 - **FR-018**: A interface DEVE usar exclusivamente a paleta da Constituição v1.2.0 (Princípio II) e a tipografia Montserrat self-hosted. O vermelho fica restrito a ações e destaques, e o verde aos botões que abrem o WhatsApp (FR-003, FR-010, FR-015 e FR-016).
-- **FR-019**: As seções DEVEM aparecer nesta ordem: Faixa superior → Cabeçalho → Hero → Diferenciais → Categorias → Coleções → Sobre a Marca → Depoimentos & Instagram → Rodapé.
+- **FR-019**: As seções DEVEM aparecer nesta ordem: Faixa superior → Cabeçalho → Hero → Diferenciais → Categorias → Coleções → Como Atendemos → Depoimentos & Instagram → Rodapé.
 
 ### Key Entities *(include if feature involves data)*
 
